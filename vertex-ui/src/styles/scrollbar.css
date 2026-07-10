@@ -1,0 +1,19 @@
+::-webkit-scrollbar {
+
+  width:8px;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+  background:var(--gray-300);
+
+  border-radius:999px;
+
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+
+  background:var(--gray-700);
+
+}
