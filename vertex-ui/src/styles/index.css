@@ -13,6 +13,42 @@ body,
   min-height: 100%;
 }
 
+@theme {
+
+  --color-button-primary:
+    var(--button-primary-bg);
+
+  --color-button-primary-hover:
+    var(--button-primary-hover);
+
+
+  --color-button-secondary:
+    var(--button-secondary-bg);
+
+  --color-button-secondary-hover:
+    var(--button-secondary-hover);
+
+
+  --color-button-danger:
+    var(--button-danger-bg);
+
+  --color-button-danger-hover:
+    var(--button-danger-hover);
+
+
+  --color-button-outline-border:
+    var(--button-outline-border);
+
+
+  --color-button-outline-hover:
+    var(--button-outline-hover);
+
+
+  --color-button-link:
+    var(--button-link-color);
+
+}
+
 body {
   font-family: var(--font-sans);
 

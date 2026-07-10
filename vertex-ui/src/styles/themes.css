@@ -12,6 +12,23 @@
 
   --border:#3f3f46;
 
+    --button-secondary-bg:
+    var(--gray-800);
+
+  --button-secondary-hover:
+    var(--gray-700);
+
+
+  --button-outline-border:
+    var(--gray-700);
+
+  --button-outline-hover:
+    var(--gray-800);
+
+
+  --button-ghost-hover:
+    var(--gray-800);
+
 }
 
 [data-theme="light"] {

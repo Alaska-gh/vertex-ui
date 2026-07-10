@@ -1,45 +1,55 @@
-import { useTheme } from "@/hooks/use-theme";
+import { Button } from "@/components/ui";
+
 
 function App() {
-  const {
-    theme,
-    resolvedTheme,
-    setTheme,
-  } = useTheme();
 
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <div className="space-y-4 rounded-lg border p-8">
-        <h1 className="text-3xl font-bold">
-          Vertex UI
-        </h1>
 
-        <p>Theme: {theme}</p>
+    <main className="
+      flex
+      min-h-screen
+      items-center
+      justify-center
+      gap-3
+      flex-wrap
+      p-10
+      bg-gray-300
+    ">
 
-        <p>Resolved: {resolvedTheme}</p>
+      <Button>
+        Primary
+      </Button>
 
-        <div className="flex gap-2">
-          <button
-            onClick={() => setTheme("light")}
-          >
-            Light
-          </button>
 
-          <button
-            onClick={() => setTheme("dark")}
-          >
-            Dark
-          </button>
+      <Button variant="secondary">
+        Secondary
+      </Button>
 
-          <button
-            onClick={() => setTheme("system")}
-          >
-            System
-          </button>
-        </div>
-      </div>
+
+      <Button variant="outline">
+        Outline
+      </Button>
+
+
+      <Button variant="ghost">
+        Ghost
+      </Button>
+
+
+      <Button variant="destructive">
+        Delete
+      </Button>
+
+
+      <Button variant="link">
+        Link
+      </Button>
+
+
     </main>
+
   );
 }
+
 
 export default App;
