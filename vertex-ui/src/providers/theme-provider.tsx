@@ -7,7 +7,7 @@ import {
 } from "react";
 
 import { THEME_STORAGE_KEY } from "@/constants/theme";
-import { getStorageItem, setStorageItem } from "@/utils";
+import { getStorageItem, setStorageItem } from "@/lib/utils";
 import type { Theme } from "@/types/theme";
 
 type ThemeContextType = {
