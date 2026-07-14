@@ -16,48 +16,29 @@ type ThemeContextType = {
   setTheme: (theme: Theme) => void;
 };
 
-export const ThemeContext = 
-  createContext<ThemeContextType | null>(null);
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
-type ThemeProviderProps = {
-  children: ReactNode;
-};
+type ThemeProviderProps = { children: ReactNode };
 
-export function ThemeProvider({
-  children,
-}: ThemeProviderProps) {
+export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>("system");
 
-  const [resolvedTheme, setResolvedTheme] = useState<
-    "light" | "dark"
-  >("light");
+  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    const storedTheme =
-      getStorageItem(THEME_STORAGE_KEY) as Theme | null;
+    const storedTheme = getStorageItem(THEME_STORAGE_KEY) as Theme | null;
 
-    if (storedTheme) {
-      setTheme(storedTheme);
-    }
+    if (storedTheme) {setTheme(storedTheme)}
+
   }, []);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    );
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     const applyTheme = (currentTheme: Theme) => {
-      const actualTheme =
-        currentTheme === "system"
-          ? mediaQuery.matches
-            ? "dark"
-            : "light"
-          : currentTheme;
+      const actualTheme = currentTheme === "system" ? mediaQuery.matches ? "dark" : "light" : currentTheme;
 
-      document.documentElement.setAttribute(
-        "data-theme",
-        actualTheme
-      );
+      document.documentElement.setAttribute( "data-theme", actualTheme );
 
       setResolvedTheme(actualTheme);
     };
@@ -68,8 +49,7 @@ export function ThemeProvider({
 
     mediaQuery.addEventListener("change", listener);
 
-    return () =>
-      mediaQuery.removeEventListener("change", listener);
+    return () => mediaQuery.removeEventListener("change", listener);
   }, [theme]);
 
   const handleSetTheme = (newTheme: Theme) => {
@@ -78,8 +58,7 @@ export function ThemeProvider({
     setStorageItem(THEME_STORAGE_KEY, newTheme);
   };
 
-  const value = useMemo(
-    () => ({
+  const value = useMemo(() => ({
       theme,
       resolvedTheme,
       setTheme: handleSetTheme,

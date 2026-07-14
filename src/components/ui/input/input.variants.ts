@@ -1,3 +1,4 @@
+import { radiusVariants } from "@/lib/variants/radius";
 import { cva } from "class-variance-authority";
 
 
@@ -5,7 +6,6 @@ export const inputVariants = cva(
   [
     "flex",
     "w-full",
-    "rounded-md",
     "border",
     "bg-background",
     "text-foreground",
@@ -48,6 +48,8 @@ export const inputVariants = cva(
       },
 
 
+      radius: radiusVariants,
+
       error: {
 
         true:
@@ -71,7 +73,8 @@ export const inputVariants = cva(
       variant: "outline",
 
       size: "md",
-
+    
+      radius: "md"
     },
 
   }

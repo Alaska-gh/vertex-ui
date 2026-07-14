@@ -1,3 +1,4 @@
+import { radiusVariants } from "@/lib/variants/radius";
 import { cva } from "class-variance-authority";
 
 export const buttonVariants = cva(
@@ -7,7 +8,6 @@ export const buttonVariants = cva(
     "justify-center",
     "gap-2",
     "whitespace-nowrap",
-    "rounded-md",
     "font-medium",
     "transition-all",
     "duration-200",
@@ -55,6 +55,8 @@ export const buttonVariants = cva(
 
         icon: "h-10 w-10",
       },
+
+      radius: radiusVariants
     },
 
     compoundVariants: [
@@ -90,6 +92,7 @@ export const buttonVariants = cva(
     defaultVariants: {
       variant: "primary",
       size: "md",
+      radius: "md"
     },
   },
 );

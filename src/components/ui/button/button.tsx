@@ -14,6 +14,7 @@ export const VButton = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = BUTTON_DEFAULTS.variant,
       type = BUTTON_DEFAULTS.type,
       size = BUTTON_DEFAULTS.size,
+      radius,
       asChild = false,
       loading = false,
       loadingText,
@@ -29,7 +30,7 @@ export const VButton = forwardRef<HTMLButtonElement, ButtonProps>(
     const isDisabled = disabled || loading;
 
     const classes = cn(
-      buttonVariants({ variant, size }),
+      buttonVariants({ variant, size, radius }),
       fullWidth && "w-full",
       className,
     );

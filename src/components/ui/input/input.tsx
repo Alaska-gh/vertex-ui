@@ -13,6 +13,7 @@ export const VInput = forwardRef<HTMLInputElement, InputProps>(
       className,
       variant,
       size,
+      radius,
       error,
       label,
       helperText,
@@ -50,9 +51,10 @@ export const VInput = forwardRef<HTMLInputElement, InputProps>(
           )}
 
 
-          <input ref={ref} id={inputId}    className={cn(inputVariants({
+          <input ref={ref} id={inputId} className={cn(inputVariants({
                 variant,
                 size,
+                radius,
                 error,
                 fullWidth,
               }),
