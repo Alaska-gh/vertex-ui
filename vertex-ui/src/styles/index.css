@@ -14,39 +14,126 @@ body,
 }
 
 @theme {
+  /* ================= PRIMARY ================= */
 
-  --color-button-primary:
-    var(--button-primary-bg);
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
 
-  --color-button-primary-hover:
-    var(--button-primary-hover);
+  /* ================= GRAY ================= */
 
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --color-gray-950: var(--gray-950);
 
-  --color-button-secondary:
-    var(--button-secondary-bg);
+  /* ================= SEMANTIC COLORS ================= */
 
-  --color-button-secondary-hover:
-    var(--button-secondary-hover);
+  --color-success: var(--success);
 
+  --color-warning: var(--warning);
 
-  --color-button-danger:
-    var(--button-danger-bg);
+  --color-danger: var(--danger);
 
-  --color-button-danger-hover:
-    var(--button-danger-hover);
+  --color-info: var(--info);
 
+  /* ================= BUTTON ================= */
 
-  --color-button-outline-border:
-    var(--button-outline-border);
+  --color-button-primary: var(--button-primary-bg);
 
+  --color-button-primary-hover: var(--button-primary-hover);
 
-  --color-button-outline-hover:
-    var(--button-outline-hover);
+  --color-button-secondary: var(--button-secondary-bg);
 
+  --color-button-secondary-hover: var(--button-secondary-hover);
 
-  --color-button-link:
-    var(--button-link-color);
+  --color-button-danger: var(--button-danger-bg);
 
+  --color-button-danger-hover: var(--button-danger-hover);
+
+  --color-button-outline-border: var(--button-outline-border);
+
+  --color-button-outline-hover: var(--button-outline-hover);
+
+  --color-button-ghost-hover: var(--button-ghost-hover);
+
+  --color-button-link: var(--button-link-color);
+
+  --color-button-link-hover: var(--button-link-hover);
+
+  /* ================= FOCUS ================= */
+
+  --color-focus-ring: var(--focus-ring-color);
+  --ring-width-focus: var(--focus-ring-width);
+
+  /* ================= TYPOGRAPHY ================= */
+
+  --font-sans: var(--font-family-sans);
+
+  /* ================= RADIUS ================= */
+
+  --radius-sm: var(--radius-size-sm);
+
+  --radius-md: var(--radius-size-md);
+
+  --radius-lg: var(--radius-size-lg);
+
+  --radius-xl: var(--radius-size-xl);
+
+  --radius-full: var(--radius-size-full);
+
+  /* ================= SHADOWS ================= */
+
+  --shadow-xs: var(--shadow-value-xs);
+
+  --shadow-sm: var(--shadow-value-sm);
+
+  --shadow-md: var(--shadow-value-md);
+
+  --shadow-lg: var(--shadow-value-lg);
+
+  /* ================= TEXT ================= */
+
+  --text-xs: var(--font-size-xs);
+
+  --text-sm: var(--font-size-sm);
+
+  --text-base: var(--font-size-base);
+
+  --text-lg: var(--font-size-lg);
+
+  --text-xl: var(--font-size-xl);
+
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+
+  /* ================= SPACING ================= */
+
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-5: var(--space-5);
+  --spacing-6: var(--space-6);
+  --spacing-8: var(--space-8);
+  --spacing-10: var(--space-10);
+  --spacing-12: var(--space-12);
+  --spacing-16: var(--space-16);
 }
 
 body {
@@ -57,8 +144,8 @@ body {
   color: var(--foreground);
 
   transition:
-    background-color .2s ease,
-    color .2s ease;
+    background-color 0.2s ease,
+    color 0.2s ease;
 
   text-rendering: optimizeLegibility;
 

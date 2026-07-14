@@ -1,55 +1,38 @@
-import { Button } from "@/components/ui";
-
+import { VButton } from "@/components/ui";
+import { ArrowRight, Plus, Settings, Search } from "lucide-react";
 
 function App() {
-
   return (
+    <main className="flex min-h-screen flex-wrap items-center justify-center gap-3 bg-gray-300 p-10">
+      
+  <VButton>
+    Primary
+  </VButton>
 
-    <main className="
-      flex
-      min-h-screen
-      items-center
-      justify-center
-      gap-3
-      flex-wrap
-      p-10
-      bg-gray-300
-    ">
+  <VButton disabled>
+    Disabled
+  </VButton>
 
-      <Button>
-        Primary
-      </Button>
+  <VButton loading>
+    Loading
+  </VButton>
 
+  <VButton
+    size="icon"
+    aria-label="Settings"
+  >
+    <Settings />
+  </VButton>
 
-      <Button variant="secondary">
-        Secondary
-      </Button>
+  <VButton fullWidth leftIcon={<Plus/>}>
+    Save
+  </VButton>
 
-
-      <Button variant="outline">
-        Outline
-      </Button>
-
-
-      <Button variant="ghost">
-        Ghost
-      </Button>
-
-
-      <Button variant="destructive">
-        Delete
-      </Button>
-
-
-      <Button variant="link">
-        Link
-      </Button>
-
-
+  <VButton asChild>
+    <a href="/">Home</a>
+  </VButton>
     </main>
-
   );
 }
-
 
 export default App;
