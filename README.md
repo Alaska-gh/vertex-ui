@@ -181,7 +181,11 @@ src
 
 | Component | Storybook | Tests | Accessibility |
 |-----------|-----------|-------|---------------|
-| Button | ✅ | ✅ 9 Tests | ✅ |✅ Input
+| Button | ✅ | ✅ 9 Tests | ✅ |
+
+| Component | Storybook | Tests | Accessibility |
+|-----------|-----------|-------|---------------|
+| Input | ✅ | ✅ 7 Tests | ✅ |
 
 ---
 
