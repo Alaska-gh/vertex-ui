@@ -138,7 +138,7 @@ src
 ### Inputs
 
 - [x] Button
-- [ ] Input
+- [x] Input
 - [ ] Textarea
 - [ ] Checkbox
 - [ ] Radio
@@ -181,7 +181,7 @@ src
 
 | Component | Storybook | Tests | Accessibility |
 |-----------|-----------|-------|---------------|
-| Button | ✅ | ✅ 9 Tests | ✅ |
+| Button | ✅ | ✅ 9 Tests | ✅ |✅ Input
 
 ---
 
