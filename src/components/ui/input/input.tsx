@@ -1,11 +1,12 @@
 import { forwardRef } from "react";
 
-import { inputVariants} from "./input.variants";
+import { inputVariants } from "./input.variants";
+import { useId } from "react";
 
-import type { InputProps} from "./input.types";
+import type { InputProps } from "./input.types";
 
 import { cn } from "@/lib/utils";
-
+import { FormField } from "../form-field";
 
 export const VInput = forwardRef<HTMLInputElement, InputProps>(
   (
@@ -18,79 +19,59 @@ export const VInput = forwardRef<HTMLInputElement, InputProps>(
       label,
       helperText,
       errorMessage,
+      disabled,
+      required,
       leftIcon,
       rightIcon,
       fullWidth,
       id,
       ...props
     },
-    ref
+    ref,
   ) => {
+    const generatedId = useId();
 
-    const inputId = id ?? crypto.randomUUID();
-
+    const inputId = id ?? generatedId;
 
     return (
-      <div
-        className={cn( "flex flex-col gap-1.5", fullWidth && "w-full"
-        )}
+      <FormField
+        label={label}
+        helperText={helperText}
+        error={!!error}
+        htmlFor={inputId}
+        errorMessage={errorMessage}
+        disabled={disabled}
+        required={required}
       >
-        {label && (
-         <label htmlFor={inputId} className="text-sm font-medium text-foreground">
-            {label}
-          </label>
-        )}
+        {leftIcon}
+        <input
+          ref={ref}
+          disabled={disabled}
+          required={required}
+          aria-invalid={!!error}
+          aria-describedby={
+            error
+              ? `${inputId}-error`
+              : helperText
+                ? `${inputId}-helper`
+                : undefined
+          }
+          id={inputId}
+          className={cn(
+            inputVariants({ variant, size, radius, error, fullWidth }),
 
+            leftIcon && "pl-10",
 
-        <div className="relative flex items-center" >
+            rightIcon && "pr-10",
 
-          {leftIcon && (
-            <span className=" absolute left-3 text-gray-400 flex items-center">
-              {leftIcon}
-            </span>
+            className,
           )}
-
-
-          <input ref={ref} id={inputId} className={cn(inputVariants({
-                variant,
-                size,
-                radius,
-                error,
-                fullWidth,
-              }),
-
-              leftIcon && "pl-10",
-
-              rightIcon && "pr-10",
-
-              className
-            )}
-            {...props}
-          />
-
-
-          {rightIcon && (
-            <span className=" absolute right-3 text-gray-400 flex items-center">
-              {rightIcon}
-            </span>
-          )}
-
-        </div>
-
-
-        {errorMessage ? (
-          <p className="text-sm text-danger">
-            {errorMessage}
-          </p>
-        ) : helperText ? (
-          <p className="text-sm text-gray-500">
-            {helperText}
-          </p>
-        ) : null}
-      </div>
+          {...props}
+        />
+        {rightIcon}
+      </FormField>
     );
-  }
+  },
 );
-
 
 VInput.displayName = "VInput";
