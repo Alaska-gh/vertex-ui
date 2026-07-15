@@ -1,5 +1,5 @@
 import { VButton } from "@/components/ui";
-import { ArrowRight, Plus, Settings, Search } from "lucide-react";
+import { Plus, Settings } from "lucide-react";
 
 function App() {
   return (
