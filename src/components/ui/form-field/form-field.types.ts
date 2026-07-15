@@ -1,12 +1,8 @@
 import type { ReactNode } from "react";
+import type { BaseFormFieldProps } from "./form/types";
 
-export interface FormFieldProps {
-  label?: string;
-  helperText?: string;
-  error?: boolean;
-  errorMessage?: string;
-  required?: boolean;
-  disabled?: boolean;
+export interface FormFieldProps extends BaseFormFieldProps {
   htmlFor?: string;
   children: ReactNode;
+  error?: boolean
 }
