@@ -3,7 +3,7 @@ import { VButton } from "./button";
 import { Plus, Settings, ArrowRight } from "lucide-react";
 
 const meta: Meta<typeof VButton> = {
-  title: "UI/Button",
+  title: "Components/Button",
   component: VButton,
 
   parameters: {

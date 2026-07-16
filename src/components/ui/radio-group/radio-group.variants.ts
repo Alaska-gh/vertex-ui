@@ -36,16 +36,17 @@ export const radioItemVariants = cva(
         full: "rounded-full",
       },
 
-      error: {
-        true: "border-danger focus-visible:ring-danger",
-        false: "",
-      },
+      sateColor:{
+        default: "data-[state=checked]:border-primary data-[state=unchecked]:border-border",
+        error: "data-[state=checked]:border-primary data-[state=unchecked]:border-border",
+      }
+      
     },
 
     defaultVariants: {
       size: "md",
       radius: "full",
-      error: false,
+      sateColor: "default",
     },
   },
 );

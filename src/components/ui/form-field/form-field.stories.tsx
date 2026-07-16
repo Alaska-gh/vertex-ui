@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FormField } from "./form-field";
 
 const meta: Meta<typeof FormField> = {
-  title: "UI/FormField",
+  title: "Components/FormField",
   component: FormField,
   tags: ["autodocs"],
 };

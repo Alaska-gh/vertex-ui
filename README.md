@@ -147,7 +147,7 @@ src
 - [x] Textarea
 - [x] Checkbox
 - [x] Radio
-- [ ] Switch
+- [x] Switch
 
 
 ### Feedback
@@ -199,6 +199,8 @@ src
 | CheckBox  | ✅        | ✅ 11 Tests | ✅           |
 |-----------|------------|-------------|--------------|
 | RadioGroup| ✅        | ✅ 8 Tests  | ✅           |
+|-----------|------------|-------------|--------------|
+| Switch    | ✅        | ✅ 8 Tests  | ✅           |
 
 ---
 

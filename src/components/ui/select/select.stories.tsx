@@ -10,7 +10,7 @@ const options = [
 ];
 
 const meta: Meta<typeof VSelect> = {
-  title: "UI/Select",
+  title: "Components/Select",
   component: VSelect,
   tags: ["autodocs"],
 

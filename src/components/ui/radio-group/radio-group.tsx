@@ -38,16 +38,20 @@ export const VRadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     ref,
   ) => {
     const generatedId = useId();
+
+    const indicatorSize = {
+      sm: "h-1.5 w-1.5",
+      md: "h-2 w-2",
+      lg: "h-3 w-3",
+    };
+
     return (
       <FormField
         label={label}
-
         helperText={helperText}
-
         error={!!error}
-
         errorMessage={errorMessage}
-
+        disabled={disabled}
         required={required}
       >
         <RadioGroup.Root
@@ -82,17 +86,29 @@ export const VRadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
                   aria-labelledby={`${optionId}-label`}
                   className={cn(
                     radioItemVariants({
-                        size,
-                        radius
-                    })
+                      size,
+                      radius,
+                      sateColor: error ? "error" : "default",
+                    }),
                   )}
                 >
                   <RadioGroup.Indicator className="flex items-center justify-center">
-                    <div className="bg-primary h-2 w-2 rounded-full" />
+                    <div className={cn(
+                        "rounded-full bg-primary",
+                        indicatorSize[size],
+                        error? "bg-danger" : "bg-primary"
+                    )} />
                   </RadioGroup.Indicator>
                 </RadioGroup.Item>
 
-                <label id={`${optionId}-label`} htmlFor={optionId}>
+                <label
+                  id={`${optionId}-label`}
+                  htmlFor={optionId}
+                  className={cn(
+                    "text-sm",
+                    option.disabled && "cursor-not-allowed opacity-50",
+                  )}
+                >
                   {option.label}
                 </label>
               </div>

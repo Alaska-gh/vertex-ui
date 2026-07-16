@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { VTextarea } from "./textarea";
 
 const meta: Meta<typeof VTextarea> = {
-  title: "UI/Textarea",
+  title: "Components/Textarea",
   component: VTextarea,
   tags: ["autodocs"],
 

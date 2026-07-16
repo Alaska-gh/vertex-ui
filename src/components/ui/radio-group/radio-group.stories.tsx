@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { VRadioGroup } from "./radio-group";
 
 const meta: Meta<typeof VRadioGroup> = {
-  title: "UI/RadioGroup",
+  title: "Components/RadioGroup",
   component: VRadioGroup,
 
   parameters: {
