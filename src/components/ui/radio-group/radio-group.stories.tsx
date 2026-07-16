@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { VRadioGroup } from "./radio-group";
 
-const meta = {
+const meta: Meta<typeof VRadioGroup> = {
   title: "UI/RadioGroup",
   component: VRadioGroup,
 
@@ -14,28 +14,40 @@ const meta = {
 
   argTypes: {
     orientation: {
-      control: "radio",
+      control: "select",
       options: ["vertical", "horizontal"],
     },
 
-    disabled: {
-      control: "boolean",
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+
+    radius: {
+      control: "select",
+      options: [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "full",
+      ],
     },
 
     error: {
       control: "boolean",
     },
 
-    required: {
+    disabled: {
       control: "boolean",
     },
   },
-} satisfies Meta<typeof VRadioGroup>;
+};
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-
+type Story = StoryObj<typeof VRadioGroup>;
 
 const options = [
   {
@@ -52,16 +64,10 @@ const options = [
   },
 ];
 
-
 export const Default: Story = {
   args: {
     options,
-
     label: "Gender",
-
-    helperText: "Select your gender",
-
-    orientation: "vertical",
   },
 };
 
@@ -69,10 +75,27 @@ export const Default: Story = {
 export const Horizontal: Story = {
   args: {
     options,
-
     label: "Gender",
-
     orientation: "horizontal",
+  },
+};
+
+
+export const WithHelperText: Story = {
+  args: {
+    options,
+    label: "Gender",
+    helperText: "Select your preferred option",
+  },
+};
+
+
+export const Error: Story = {
+  args: {
+    options,
+    label: "Gender",
+    error: true,
+    errorMessage: "Please select a gender",
   },
 };
 
@@ -80,16 +103,16 @@ export const Horizontal: Story = {
 export const Disabled: Story = {
   args: {
     options,
-
     label: "Gender",
-
     disabled: true,
   },
 };
 
 
-export const DisabledOption: Story = {
+export const WithDisabledOption: Story = {
   args: {
+    label: "Role",
+
     options: [
       {
         label: "Admin",
@@ -100,34 +123,40 @@ export const DisabledOption: Story = {
         value: "guest",
         disabled: true,
       },
+      {
+        label: "Editor",
+        value: "editor",
+      },
     ],
-
-    label: "Role",
   },
 };
 
 
-export const Error: Story = {
+export const Sizes: Story = {
   args: {
     options,
-
-    label: "Gender",
-
-    error: true,
-
-    errorMessage: "Please select a gender",
-
-    required: true,
+    label: "Size demo",
   },
-};
 
+  render: () => (
+    <div className="space-y-6">
+      <VRadioGroup
+        options={options}
+        label="Small"
+        size="sm"
+      />
 
-export const Controlled: Story = {
-  args: {
-    options,
+      <VRadioGroup
+        options={options}
+        label="Medium"
+        size="md"
+      />
 
-    label: "Gender",
-
-    value: "female",
-  },
+      <VRadioGroup
+        options={options}
+        label="Large"
+        size="lg"
+      />
+    </div>
+  ),
 };
