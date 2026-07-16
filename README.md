@@ -45,17 +45,17 @@ The goal of Vertex UI is to provide beautifully designed, highly accessible, pro
 
 # Tech Stack
 
-| Technology | Purpose |
-|------------|----------|
-| React | UI Library |
-| TypeScript | Type Safety |
-| Tailwind CSS v4 | Styling |
-| Storybook | Component Documentation |
-| Vitest | Unit Testing |
-| Testing Library | Component Testing |
-| CVA | Variant Management |
-| Radix UI | Component Composition |
-| Lucide React | Icons |
+| Technology       | Purpose                 |
+|------------------|-------------------------|
+| React            | UI Library              |
+| TypeScript       | Type Safety             |
+| Tailwind CSS v4  | Styling                 |
+| Storybook        | Component Documentation |
+| Vitest           | Unit Testing            |
+| Testing Library  | Component Testing       |
+| CVA              | Variant Management      |
+| Radix UI         | Component Composition   |
+| Lucide React     | Icons                   |
 
 ---
 
@@ -100,6 +100,8 @@ npm run build
 ```text
 src
 │
+|__assets
+|
 ├── components
 │   └── ui
 │       ├── button
@@ -140,11 +142,12 @@ src
 - [x] Button
 - [x] Input
 - [x] FormField
-- [ ] Textarea
-- [ ] Checkbox
+- [x] Textarea
+- [x] Select
+- [x] Textarea
 - [ ] Radio
 - [ ] Switch
-- [ ] Select
+- [ ] Checkbox
 
 ### Feedback
 
@@ -187,6 +190,10 @@ src
 | Input     | ✅         | ✅ 7 Tests | ✅           |
 |-----------|------------|-------------|--------------|
 | FormField | ✅         | ✅ 7 Tests | ✅           |
+|-----------|------------|-------------|--------------|
+| Textarea  | ✅         | ✅12 Tests | ✅           |
+|-----------|------------|-------------|--------------|
+| Select    | ✅         | ✅ 9 Tests | ✅           |
 
 ---
 
@@ -227,8 +234,9 @@ Vertex UI follows four guiding principles.
 
 ## Version 0.2
 
-- [ ] Input
-- [ ] Textarea
+- [x] Input
+- [x] Textarea
+- [x] Select
 - [ ] Badge
 
 ## Version 0.3
