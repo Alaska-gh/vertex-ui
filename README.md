@@ -145,9 +145,10 @@ src
 - [x] Textarea
 - [x] Select
 - [x] Textarea
-- [ ] Radio
+- [x] Checkbox
+- [x] Radio
 - [ ] Switch
-- [ ] Checkbox
+
 
 ### Feedback
 
@@ -194,6 +195,10 @@ src
 | Textarea  | ✅         | ✅12 Tests | ✅           |
 |-----------|------------|-------------|--------------|
 | Select    | ✅         | ✅ 9 Tests | ✅           |
+|-----------|------------|-------------|--------------|
+| CheckBox  | ✅        | ✅ 11 Tests | ✅           |
+|-----------|------------|-------------|--------------|
+| RadioGroup| ✅        | ✅ 8 Tests  | ✅           |
 
 ---
 
