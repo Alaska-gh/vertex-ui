@@ -1,5 +1,5 @@
 :root {
-   --background: #ffffff;
+  --background: #ffffff;
   --foreground: #111827;
 
   --muted: #f3f4f6;
@@ -10,7 +10,20 @@
   --primary: #2563eb;
   --primary-foreground: #ffffff;
 
+  --secondary: #f3f4f6;
+  --secondary-foreground: #111827;
+
+  --success: #22c55e;
+  --success-foreground: #ffffff;
+
+  --warning: #f59e0b;
+  --warning-foreground: #111827;
+
   --danger: #ef4444;
+  --danger-foreground: #ffffff;
+
+  --info: #06b6d4;
+  --info-foreground: #ffffff;
   /* ========= PRIMARY ========= */
 
   --primary-50: #eff6ff;
@@ -63,6 +76,10 @@
   /* ========= INFO ========= */
 
   --info: #0ea5e9;
+
+  /* ========= secondary ========= */
+
+  --secondary: #f3f4f6;
 
   /* Fonts */
 

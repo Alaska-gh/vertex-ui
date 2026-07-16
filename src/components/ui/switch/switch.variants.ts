@@ -15,8 +15,8 @@ export const switchVariants = cva(
     "data-[state=checked]:bg-primary",
     "data-[state=checked]:border-primary",
 
-    "data-[state=unchecked]:bg-gray-300",
-    "data-[state=unchecked]:border-border",
+    "data-[state=unchecked]:bg-secondary",
+    "data-[state=unchecked]:border-secondary",
   ],
   {
     variants: {

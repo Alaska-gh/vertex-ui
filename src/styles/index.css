@@ -16,8 +16,17 @@ body,
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-success-foreground: var(--success-foreground);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-info-foreground: var(--info-foreground);
 
   --color-primary: var(--primary);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
 
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
@@ -58,6 +67,8 @@ body,
   --color-success: var(--success);
 
   --color-warning: var(--warning);
+
+  --color-secondary: var(--secondary);
 
   --color-danger: var(--danger);
 
