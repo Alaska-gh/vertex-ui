@@ -12,7 +12,7 @@ const config: StorybookConfig = {
     "@storybook/addon-docs"
   ],
    framework: {
-    name: "@storybook/react-vite",
+    name: "@storybook/react-vite-vite",
     options: {},
   },
 

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { VButton } from "./button";
 import { Plus, Settings, ArrowRight } from "lucide-react";
 

@@ -55,6 +55,14 @@ export const VTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       }
     }, [props.value]);
 
+    useEffect(() => {
+      const textarea = textareaRef.current;
+
+      if (!textarea || !maxRows) return;
+
+      textarea.style.maxHeight = `${maxRows * 24}px`;
+    }, [maxRows]);
+
     const resizeTextarea = (element: HTMLTextAreaElement) => {
       element.style.height = "auto";
       element.style.overflowY = "hidden";
@@ -125,8 +133,11 @@ export const VTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
           {showCount && maxLength && (
             <p
-              className={cn("text-right text-xs",
-                count >= (maxLength - 5) ? "text-danger" : "text-muted-foreground",
+              className={cn(
+                "text-right text-xs",
+                count >= maxLength - 5
+                  ? "text-danger"
+                  : "text-muted-foreground",
               )}
             >
               {count} / {maxLength}
