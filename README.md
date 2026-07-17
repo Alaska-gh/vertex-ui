@@ -154,7 +154,7 @@ src
 
 - [ ] Alert
 - [ ] Toast
-- [ ] Spinner
+- [x] Spinner
 - [ ] Skeleton
 - [x] Progress
 
@@ -210,6 +210,8 @@ src
 | Tooltip   | ✅        | ✅ 5 Tests  | ✅           |
 |-----------|------------|-------------|--------------|
 | Progress  | ✅        | ✅ 8 Tests  | ✅           |
+|-----------|------------|-------------|--------------|
+| Spinner   | ✅        | ✅ 6 Tests  | ✅           |
 
 ---
 
