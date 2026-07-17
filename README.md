@@ -160,7 +160,7 @@ src
 ### Data Display
 
 - [x] Badge
-- [ ] Avatar
+- [x] Avatar
 - [ ] Card
 - [ ] Divider
 - [ ] Table
@@ -177,7 +177,7 @@ src
 
 - [ ] Modal
 - [ ] Drawer
-- [ ] Tooltip
+- [x] Tooltip
 - [ ] Popover
 
 ---
@@ -203,6 +203,10 @@ src
 | Switch    | ✅        | ✅ 8 Tests  | ✅           |
 |-----------|------------|-------------|--------------|
 | Badge     | ✅        | ✅ 5 Tests  | ✅           |
+|-----------|------------|-------------|--------------|
+| Avatar    | ✅        | ✅ 6 Tests  | ✅           |
+|-----------|------------|-------------|--------------|
+| tooltip   | ✅        | ✅ 5 Tests  | ✅           |
 
 ---
 
