@@ -177,7 +177,7 @@ src
 ### Overlay
 
 - [x] Modal
-- [ ] Drawer
+- [x] Drawer
 - [x] Tooltip
 - [ ] Popover
 
@@ -202,6 +202,8 @@ src
 | Alert     | ✅        | ✅ 6 Tests  | ✅           |
 | Toast     | ✅        | ✅ 6 Tests  | ✅           |
 | Modal     | ✅        | ✅ 9 Tests  | ✅           |
+|-----------|------------|-------------|--------------|
+| Drawer    | ✅        | ✅ 8 Tests  | ✅           |
 
 ---
 
