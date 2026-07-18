@@ -186,6 +186,7 @@ src
 # Completed Components
 
 | Component | Storybook  | Tests       | Accessibility |
+|-----------|------------|-------------|---------------|
 | Button    | ✅         | ✅ 9 Tests | ✅           |
 | Input     | ✅         | ✅ 7 Tests | ✅           |
 | FormField | ✅         | ✅ 7 Tests | ✅           |
