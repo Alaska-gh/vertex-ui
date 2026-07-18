@@ -153,7 +153,7 @@ src
 ### Feedback
 
 - [x] Alert
-- [ ] Toast
+- [x] Toast
 - [x] Spinner
 - [ ] Skeleton
 - [x] Progress
@@ -214,6 +214,8 @@ src
 | Spinner   | ✅        | ✅ 6 Tests  | ✅           |
 |-----------|------------|-------------|--------------|
 | Alert     | ✅        | ✅ 6 Tests  | ✅           |
+|-----------|------------|-------------|--------------|
+| Toast     | ✅        | ✅ 6 Tests  | ✅           |
 
 ---
 
