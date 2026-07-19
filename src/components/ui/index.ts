@@ -19,3 +19,4 @@ export * from "./spinner";
 export * from "./radio-group";
 export * from "./table";
 export * from "./skeleton";
+export * from "./tabs";
