@@ -164,12 +164,12 @@ src
 - [x] Avatar
 - [x] Card
 - [ ] Divider
-- [x] Table
+- [x] tabsle
 - [ ] Data Grid
 
 ### Navigation
 
-- [ ] Tabs
+- [x] tabs
 - [ ] Breadcrumb
 - [ ] Pagination
 - [ ] Dropdown
@@ -208,6 +208,7 @@ src
 | Card      | ✅        | ✅ 11 Tests | ✅           |
 | Table     | ✅        | ✅ 10 Tests | ✅           |
 | Skeleton  | ✅        | ✅ 11 Tests | ✅           |
+| Tabs      | ✅        | ✅ 9 Tests  | ✅           |
 
 ---
 
@@ -257,7 +258,7 @@ Vertex UI follows four guiding principles.
 
 - [ ] Modal
 - [ ] Dropdown
-- [ ] Tabs
+- [ ] tabs
 
 ## Version 1.0
 
