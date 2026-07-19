@@ -1,10 +1,6 @@
-import type { PopoverPlacement } from "./popover.types";
-
 export const POPOVER_DEFAULTS = {
-  placement: "bottom" as PopoverPlacement,
-  offset: 8,
-  closeOnOutsideClick: true,
-  closeOnEscape: true,
+  side: "bottom",
+  align: "center",
+  sideOffset: 8,
+  showArrow: true,
 } as const;
-
-export const POPOVER_Z_INDEX = 1000;

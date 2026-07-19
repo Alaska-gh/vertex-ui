@@ -1,28 +1,17 @@
 import type { ReactElement, ReactNode } from "react"
 
-export type PopoverPlacement = 
-| "top" 
-| "top-start" 
-| "top-end"
-| "bottom"
-| "bottom-start"
-| "bottom-end"
-| "left"
-| "left-start"
-| "left-end"
-| "right"
-| "right-start"
-| "right-end"
+export type PopoverSide = "top" | "right" | "bottom" | "left";
+export type PopoverAlign = "start" | "center" | "end";
 
-export interface VPopoverProps {
+export interface PopoverProps {
     open?: boolean
     defaultOpen?: boolean  
     onOpenChange?: (open: boolean) => void
     trigger: ReactElement
     children: ReactNode
-    placement?: PopoverPlacement
-    offset?: number
-    closeOnOutsideClick?: boolean
-    closeOnEscape?: boolean
+    side?: PopoverSide
+    align?: PopoverAlign
+    sideOffset?: number
+    showArrow?: boolean
     className?: string
 }

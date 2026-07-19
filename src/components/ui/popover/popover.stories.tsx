@@ -1,193 +1,210 @@
-import type { ComponentProps } from "react";
+import { useState } from "react";
+
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import {
-  Bell,
-  MoreHorizontal,
-  User,
-  Settings,
-  LogOut,
-  Check,
-} from "lucide-react";
-
-import { VButton } from "../button";
 import { VPopover } from "./popover";
+import { VButton } from "../button";
+import { Bell, MoreHorizontal, User } from "lucide-react";
 
 const meta = {
   title: "Components/Popover",
   component: VPopover,
   parameters: {
-    layout: "fullscreen",
+    layout: "centered",
   },
   tags: ["autodocs"],
+  args: {
+    trigger: <VButton className="rounded-md border px-3 py-1.5">Open</VButton>,
+    children: "Popover content",
+  },
 } satisfies Meta<typeof VPopover>;
 
 export default meta;
 
-type Story = StoryObj<ComponentProps<typeof VPopover>>;
+type Story = StoryObj<typeof meta>;
 
-
-/**
- * User account menu
- * Common usage in dashboards/apps.
- */
-export const AccountMenu: Story = {
+export const Default: Story = {
   render: () => (
-    <div className="flex min-h-screen items-center justify-center">
-      <VPopover
-        placement="bottom-end"
-        trigger={
-          <VButton variant="outline">
-            <User className="mr-2 h-4 w-4" />
-            Yussif
-          </VButton>
-        }
-      >
-        <div className="w-64 space-y-3 p-2">
-          <div>
-            <p className="font-semibold">
-              Yussif Bashiru
-            </p>
+    <VPopover trigger={<VButton>Open popover</VButton>}>
+      <p className="text-sm">This is the popover content.</p>
+    </VPopover>
+  ),
+};
 
-            <p className="text-sm text-muted-foreground">
-              Frontend Engineer
-            </p>
-          </div>
-
-          <div className="space-y-1 border-t pt-3">
-            <button className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-muted">
-              <Settings className="h-4 w-4" />
-              Settings
-            </button>
-
-            <button className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-destructive hover:bg-muted">
-              <LogOut className="h-4 w-4" />
-              Sign out
-            </button>
-          </div>
-        </div>
-      </VPopover>
+export const Positions: Story = {
+  render: () => (
+    <div className="flex gap-4">
+      {(["top", "right", "bottom", "left"] as const).map((side) => (
+        <VPopover
+          key={side}
+          side={side}
+          trigger={<VButton>{side}</VButton>}
+        >
+          <p className="text-sm">{`${side} popover`}</p>
+        </VPopover>
+      ))}
     </div>
   ),
 };
 
-
-/**
- * Notification dropdown
- * Typical SaaS header usage.
- */
-export const NotificationCenter: Story = {
+export const RichContent: Story = {
   render: () => (
-    <div className="flex min-h-screen items-center justify-center">
-      <VPopover
-        placement="bottom-end"
-        trigger={
-          <VButton
-            variant="outline"
-            size="icon"
-          >
-            <Bell className="h-4 w-4" />
-          </VButton>
-        }
-      >
-        <div className="w-80 space-y-3 p-2">
-          <div>
-            <h3 className="font-semibold">
-              Notifications
-            </h3>
-
-            <p className="text-sm text-muted-foreground">
-              You have 3 new updates.
-            </p>
-          </div>
-
-          <div className="space-y-2">
-            <div className="rounded-lg border p-3 text-sm">
-              New order received.
-            </div>
-
-            <div className="rounded-lg border p-3 text-sm">
-              Payment completed.
-            </div>
-
-            <div className="rounded-lg border p-3 text-sm">
-              Report generated.
-            </div>
-          </div>
-        </div>
-      </VPopover>
-    </div>
+    <VPopover
+      trigger={<VButton>Account</VButton>}
+    >
+      <div className="space-y-2">
+        <p className="font-medium">Signed in as Yussif</p>
+        <p className="text-muted-foreground text-xs">
+          Manage your account settings and preferences.
+        </p>
+      </div>
+    </VPopover>
   ),
 };
 
+export const Controlled: Story = {
+  render: function Render() {
+    const [open, setOpen] = useState(false);
 
-/**
- * Table row actions
- * Common admin dashboard usage.
- */
-export const TableActions: Story = {
-  render: () => (
-    <div className="flex min-h-screen items-center justify-center">
+    return (
       <VPopover
-        placement="bottom-end"
+        open={open}
+        onOpenChange={setOpen}
         trigger={
-          <VButton
-            variant="ghost"
-            size="icon"
-          >
-            <MoreHorizontal className="h-4 w-4" />
+          <VButton>
+            {open ? "Close" : "Open"}
           </VButton>
         }
       >
-        <div className="w-48 space-y-1 p-1">
-          <button className="w-full rounded-md px-3 py-2 text-left text-sm hover:bg-muted">
-            View details
-          </button>
-
-          <button className="w-full rounded-md px-3 py-2 text-left text-sm hover:bg-muted">
-            Edit record
-          </button>
-
-          <button className="w-full rounded-md px-3 py-2 text-left text-sm text-destructive hover:bg-muted">
-            Delete
-          </button>
-        </div>
+        <p className="text-sm">Controlled from parent state.</p>
       </VPopover>
-    </div>
+    );
+  },
+};
+
+export const WithoutArrow: Story = {
+  render: () => (
+    <VPopover
+      showArrow={false}
+      trigger={<VButton className="rounded border px-3 py-1">No arrow</VButton>}
+    >
+      <p className="text-sm">No pointing arrow here.</p>
+    </VPopover>
   ),
 };
 
-
-/**
- * Status information card
- * Useful for tooltips/info popovers.
- */
-export const StatusDetails: Story = {
+export const UserProfile: Story = {
   render: () => (
-    <div className="flex min-h-screen items-center justify-center">
-      <VPopover
-        placement="right"
-        trigger={
-          <VButton variant="outline">
-            View Status
-          </VButton>
-        }
-      >
-        <div className="w-64 space-y-3 p-2">
-          <div className="flex items-center gap-2">
-            <Check className="h-4 w-4 text-success" />
+    <VPopover
+      trigger={
+        <VButton variant="outline">
+          <User className="mr-2 h-4 w-4" />
+          Account
+        </VButton>
+      }
+    >
+      <div className="w-72 space-y-3 p-2">
+        <div>
+          <h3 className="font-semibold">
+            Yussif Bashiru
+          </h3>
 
-            <span className="font-medium">
-              Deployment Successful
-            </span>
-          </div>
-
-          <p className="text-sm text-muted-foreground">
-            Your latest deployment completed
-            successfully 5 minutes ago.
+          <p className="text-muted-foreground text-sm">
+            Frontend Engineer
           </p>
         </div>
-      </VPopover>
-    </div>
+
+        <div className="border-t pt-3">
+          <button className="hover:bg-muted w-full rounded-md px-3 py-2 text-left text-sm">
+            Profile
+          </button>
+
+          <button className="hover:bg-muted w-full rounded-md px-3 py-2 text-left text-sm">
+            Settings
+          </button>
+
+          <button className="hover:bg-muted w-full rounded-md px-3 py-2 text-left text-sm text-destructive">
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </VPopover>
+  ),
+};
+
+export const Notifications: Story = {
+  render: () => (
+    <VPopover
+      side="bottom"
+      align="end"
+      trigger={
+        <VButton variant="outline" size="icon">
+          <Bell className="h-4 w-4" />
+        </VButton>
+      }
+    >
+      <div className="space-y-4 p-2">
+
+        <div>
+          <h3 className="font-semibold">
+            Notifications
+          </h3>
+
+          <p className="text-muted-foreground text-sm">
+            You have 3 unread notifications.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+
+          <div className="rounded-md border p-3">
+            New order received.
+          </div>
+
+          <div className="rounded-md border p-3">
+            Payment confirmed.
+          </div>
+
+          <div className="rounded-md border p-3">
+            Weekly report is ready.
+          </div>
+
+        </div>
+
+      </div>
+    </VPopover>
+  ),
+};
+
+export const RowActions: Story = {
+  render: () => (
+    <VPopover
+      side="bottom"
+      align="end"
+      trigger={
+        <VButton
+          variant="ghost"
+          size="icon"
+        >
+          <MoreHorizontal className="h-4 w-4" />
+        </VButton>
+      }
+    >
+      <div className="w-48 space-y-1">
+
+        <button className="hover:bg-muted w-full rounded-md px-3 py-2 text-left text-sm">
+          View
+        </button>
+
+        <button className="hover:bg-muted w-full rounded-md px-3 py-2 text-left text-sm">
+          Edit
+        </button>
+
+        <button className="hover:bg-muted w-full rounded-md px-3 py-2 text-left text-sm text-destructive">
+          Delete
+        </button>
+
+      </div>
+    </VPopover>
   ),
 };

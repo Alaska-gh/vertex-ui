@@ -1,3 +1,2 @@
 export { VPopover } from "./popover";
-
-export type { PopoverPlacement, VPopoverProps } from "./popover.types";
+export type { PopoverAlign, PopoverProps, PopoverSide } from "./popover.types";

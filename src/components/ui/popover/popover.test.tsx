@@ -1,274 +1,107 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { useState } from "react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { VButton } from "../button";
 import { VPopover } from "./popover";
 
+const renderPopover = (
+  props?: Partial<React.ComponentProps<typeof VPopover>>,
+) =>
+  render(
+    <VPopover
+      trigger={<button>Open</button>}
+      {...props}
+    >
+      Popover content
+    </VPopover>,
+  );
 
 describe("VPopover", () => {
-  it("renders trigger content", () => {
-    render(
-      <VPopover
-        trigger={
-          <VButton>
-            Open
-          </VButton>
-        }
-      >
-        Content
-      </VPopover>
-    );
+  it("renders trigger", () => {
+    renderPopover();
 
     expect(
-      screen.getByText("Open")
+      screen.getByRole("button", { name: /open/i }),
     ).toBeInTheDocument();
   });
 
+  it("does not show content initially", () => {
+    renderPopover();
 
-  it("opens when trigger is clicked", () => {
-    render(
-      <VPopover
-        trigger={
-          <VButton>
-            Open
-          </VButton>
-        }
-      >
-        Popover Content
-      </VPopover>
-    );
+    expect(screen.queryByText("Popover content")).not.toBeInTheDocument();
+  });
 
+  it("shows content on trigger click", async () => {
+    const user = userEvent.setup();
+
+    renderPopover();
+
+    await user.click(screen.getByRole("button", { name: /open/i }));
 
     expect(
-      screen.queryByText("Popover Content")
-    ).not.toBeInTheDocument();
-
-
-    fireEvent.click(
-      screen.getByText("Open")
-    );
-
-
-    expect(
-      screen.getByText("Popover Content")
+      await screen.findByText("Popover content"),
     ).toBeInTheDocument();
   });
 
+  it("closes when clicking outside", async () => {
+    const user = userEvent.setup();
 
-  it("closes when trigger is clicked again", () => {
     render(
-      <VPopover
-        trigger={
-          <VButton>
-            Open
-          </VButton>
-        }
-      >
-        Content
-      </VPopover>
+      <div>
+        <VPopover trigger={<button>Open</button>}>Popover content</VPopover>
+        <button>Outside</button>
+      </div>,
     );
 
-
-    const trigger =
-      screen.getByText("Open");
-
-
-    fireEvent.click(trigger);
+    await user.click(screen.getByRole("button", { name: /open/i }));
 
     expect(
-      screen.getByText("Content")
+      await screen.findByText("Popover content"),
     ).toBeInTheDocument();
 
-
-    fireEvent.click(trigger);
-
+    await user.click(screen.getByRole("button", { name: /outside/i }));
 
     expect(
-      screen.queryByText("Content")
+      screen.queryByText("Popover content"),
     ).not.toBeInTheDocument();
   });
 
+  it("renders on the correct side", async () => {
+    const user = userEvent.setup();
 
-  it("renders content inside document body using portal", () => {
-    render(
-      <VPopover
-        trigger={
-          <VButton>
-            Open
-          </VButton>
-        }
-      >
-        Portal Content
-      </VPopover>
+    renderPopover({ side: "left" });
+
+    await user.click(screen.getByRole("button", { name: /open/i }));
+
+    const content = await screen.findByText("Popover content");
+
+    expect(content.closest("[data-side]")).toHaveAttribute(
+      "data-side",
+      "left",
     );
-
-
-    fireEvent.click(
-      screen.getByText("Open")
-    );
-
-
-    const content =
-      screen.getByText("Portal Content");
-
-
-    expect(
-      document.body.contains(content)
-    ).toBe(true);
   });
 
+  it("supports controlled open state", async () => {
+    const onOpenChange = vi.fn();
+    const user = userEvent.setup();
 
-  it("closes when clicking outside", () => {
-    render(
-      <>
-        <VPopover
-          trigger={
-            <VButton>
-              Open
-            </VButton>
-          }
-        >
-          Content
-        </VPopover>
+    renderPopover({ open: false, onOpenChange });
 
-        <button>
-          Outside
-        </button>
-      </>
-    );
+    await user.click(screen.getByRole("button", { name: /open/i }));
 
-
-    fireEvent.click(
-      screen.getByText("Open")
-    );
-
-
-    expect(
-      screen.getByText("Content")
-    ).toBeInTheDocument();
-
-
-    fireEvent.mouseDown(
-      screen.getByText("Outside")
-    );
-
-
-    expect(
-      screen.queryByText("Content")
-    ).not.toBeInTheDocument();
+    expect(onOpenChange).toHaveBeenCalledWith(true);
+    expect(screen.queryByText("Popover content")).not.toBeInTheDocument();
   });
 
+  it("hides the arrow when showArrow is false", async () => {
+    const user = userEvent.setup();
 
-  it("closes when Escape is pressed", () => {
-    render(
-      <VPopover
-        trigger={
-          <VButton>
-            Open
-          </VButton>
-        }
-      >
-        Content
-      </VPopover>
-    );
+    const { container } = renderPopover({ showArrow: false });
 
+    await user.click(screen.getByRole("button", { name: /open/i }));
 
-    fireEvent.click(
-      screen.getByText("Open")
-    );
+    await screen.findByText("Popover content");
 
-
-    expect(
-      screen.getByText("Content")
-    ).toBeInTheDocument();
-
-
-    fireEvent.keyDown(
-      document,
-      {
-        key: "Escape",
-      }
-    );
-
-
-    expect(
-      screen.queryByText("Content")
-    ).not.toBeInTheDocument();
-  });
-
-
-  it("calls onOpenChange in controlled mode", () => {
-    const onOpenChange =
-      vi.fn();
-
-
-    function ControlledPopover() {
-      const [open, setOpen] =
-        useState(false);
-
-
-      return (
-        <VPopover
-          open={open}
-          onOpenChange={(value) => {
-            onOpenChange(value);
-            setOpen(value);
-          }}
-          trigger={
-            <VButton>
-              Open
-            </VButton>
-          }
-        >
-          Content
-        </VPopover>
-      );
-    }
-
-
-    render(
-      <ControlledPopover />
-    );
-
-
-    fireEvent.click(
-      screen.getByText("Open")
-    );
-
-
-    expect(
-      onOpenChange
-    ).toHaveBeenCalledWith(true);
-  });
-
-
-  it("supports different placements", () => {
-    render(
-      <VPopover
-        placement="right"
-        trigger={
-          <VButton>
-            Open
-          </VButton>
-        }
-      >
-        Content
-      </VPopover>
-    );
-
-
-    fireEvent.click(
-      screen.getByText("Open")
-    );
-
-
-    const popover =
-      screen.getByRole("dialog");
-
-
-    expect(
-      popover
-    ).toBeInTheDocument();
+    expect(container.querySelector("svg")).not.toBeInTheDocument();
   });
 });
