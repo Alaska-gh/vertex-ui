@@ -25,7 +25,7 @@ const basicItems: TabItem[] = [
 ];
 
 const meta = {
-  title: "Components/tabs",
+  title: "Components/Tabs",
   component: VTab,
   parameters: {
     layout: "centered",
