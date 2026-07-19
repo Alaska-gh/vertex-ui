@@ -164,7 +164,7 @@ src
 - [x] Avatar
 - [x] Card
 - [ ] Divider
-- [ ] Table
+- [x] Table
 - [ ] Data Grid
 
 ### Navigation
@@ -206,6 +206,7 @@ src
 | Drawer    | ✅        | ✅ 8 Tests  | ✅           |
 | Popover   | ✅        | ✅ 7 Tests  | ✅           |
 | Card      | ✅        | ✅ 11 Tests | ✅           |
+| Table     | ✅        | ✅ 10 Tests | ✅           |
 
 ---
 

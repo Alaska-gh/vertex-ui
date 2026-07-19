@@ -17,3 +17,4 @@ export * from "./toast";
 export * from "./switch";
 export * from "./spinner";
 export * from "./radio-group";
+export * from "./table";
