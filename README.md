@@ -162,7 +162,7 @@ src
 
 - [x] Badge
 - [x] Avatar
-- [ ] Card
+- [x] Card
 - [ ] Divider
 - [ ] Table
 - [ ] Data Grid
@@ -205,6 +205,7 @@ src
 | Modal     | ✅        | ✅ 9 Tests  | ✅           |
 | Drawer    | ✅        | ✅ 8 Tests  | ✅           |
 | Popover   | ✅        | ✅ 7 Tests  | ✅           |
+| Card      | ✅        | ✅ 11 Tests | ✅           |
 
 ---
 
