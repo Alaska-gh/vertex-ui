@@ -179,7 +179,7 @@ src
 - [x] Modal
 - [x] Drawer
 - [x] Tooltip
-- [ ] Popover
+- [x] Popover
 
 ---
 
@@ -204,6 +204,7 @@ src
 | Toast     | ✅        | ✅ 6 Tests  | ✅           |
 | Modal     | ✅        | ✅ 9 Tests  | ✅           |
 | Drawer    | ✅        | ✅ 8 Tests  | ✅           |
+| Popover   | ✅        | ✅ 7 Tests  | ✅           |
 
 ---
 
