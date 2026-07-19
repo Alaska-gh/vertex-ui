@@ -155,7 +155,7 @@ src
 - [x] Alert
 - [x] Toast
 - [x] Spinner
-- [ ] Skeleton
+- [x] Skeleton
 - [x] Progress
 
 ### Data Display
@@ -207,6 +207,7 @@ src
 | Popover   | ✅        | ✅ 7 Tests  | ✅           |
 | Card      | ✅        | ✅ 11 Tests | ✅           |
 | Table     | ✅        | ✅ 10 Tests | ✅           |
+| Skeleton  | ✅        | ✅ 11 Tests | ✅           |
 
 ---
 
