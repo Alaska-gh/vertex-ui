@@ -163,7 +163,7 @@ src
 - [x] Badge
 - [x] Avatar
 - [x] Card
-- [ ] Divider
+- [x] Divider
 - [x] tabsle
 - [ ] Data Grid
 
@@ -209,6 +209,7 @@ src
 | Table     | ✅        | ✅ 10 Tests | ✅           |
 | Skeleton  | ✅        | ✅ 11 Tests | ✅           |
 | Tabs      | ✅        | ✅ 9 Tests  | ✅           |
+| Divider   | ✅        | ✅ 9 Tests  | ✅           |
 
 ---
 
