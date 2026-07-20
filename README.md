@@ -164,15 +164,15 @@ src
 - [x] Avatar
 - [x] Card
 - [x] Divider
-- [x] tabsle
-- [ ] Data Grid
+- [x] table
+- [x] Data Grid
 
 ### Navigation
 
 - [x] tabs
 - [ ] Breadcrumb
 - [ ] Pagination
-- [ ] Dropdown
+- [x] Dropdown
 
 ### Overlay
 
@@ -211,6 +211,7 @@ src
 | Tabs      | ✅        | ✅ 9 Tests  | ✅           |
 | Divider   | ✅        | ✅ 9 Tests  | ✅           |
 | Data Grid | ✅        | ✅ 16 Tests | ✅           |
+| Dropdown  | ✅        | ✅ 10 Tests | ✅           |
 
 ---
 

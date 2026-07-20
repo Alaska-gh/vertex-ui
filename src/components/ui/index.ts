@@ -22,3 +22,4 @@ export * from "./skeleton";
 export * from "./tabs";
 export * from "./divider";
 export * from "./data-grid";
+export * from "./dropdown";
