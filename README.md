@@ -171,7 +171,7 @@ src
 
 - [x] tabs
 - [x] Breadcrumb
-- [ ] Pagination
+- [x] Pagination
 - [x] Dropdown
 
 ### Overlay
@@ -213,6 +213,7 @@ src
 | Data Grid | ✅        | ✅ 16 Tests | ✅           |
 | Dropdown  | ✅        | ✅ 10 Tests | ✅           |
 | Breadcrumb| ✅        | ✅ 11 Tests | ✅           |
+| Pagination| ✅        | ✅ 16 Tests | ✅           |
 
 ---
 
