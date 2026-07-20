@@ -6,7 +6,7 @@ import { TABS_DEFAULTS } from "./tabs.constants";
 import type { TabProps } from "./tabs.types";
 import { tabsListVariants, tabsTriggerVariants } from "./tabs.variants";
 
-export const VTab = forwardRef<HTMLDivElement, TabProps>(
+export const VTabs = forwardRef<HTMLDivElement, TabProps>(
   (
     {
       items,
@@ -67,4 +67,4 @@ export const VTab = forwardRef<HTMLDivElement, TabProps>(
   },
 );
 
-VTab.displayName = "VTab";
+VTabs.displayName = "VTabs";

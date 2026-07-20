@@ -1,24 +1,46 @@
-import type { ReactNode } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
 
-export interface BreadcrumbItem {
+export interface BreadcrumbBaseItem {
   key: string;
 
   label: ReactNode;
 
-  /** Renders the item as a link. Omit for the current page (last item). */
-  href?: string;
-
   icon?: ReactNode;
 
-  onClick?: () => void;
+  disabled?: boolean;
 }
 
+export interface BreadcrumbLinkItem extends BreadcrumbBaseItem {
+  type: "link";
+
+  href: string;
+}
+
+export interface BreadcrumbActionItem extends BreadcrumbBaseItem {
+  type: "action";
+
+  onClick: MouseEventHandler<HTMLButtonElement>;
+}
+
+export interface BreadcrumbCurrentItem extends BreadcrumbBaseItem {
+  type: "current";
+}
+
+export type BreadcrumbItem =
+  BreadcrumbLinkItem | BreadcrumbActionItem | BreadcrumbCurrentItem;
+
 export interface BreadcrumbProps {
-  /** The last item is always treated as the current page. */
   items: BreadcrumbItem[];
 
-  /** Rendered between each item. Defaults to a chevron icon. */
   separator?: ReactNode;
+
+  maxItems?: number;
+
+  ariaLabel?: string;
+
+  collapsedLabel?: ReactNode;
+
+  size?: "sm" | "md" | "lg";
 
   className?: string;
 }

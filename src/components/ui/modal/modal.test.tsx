@@ -1,16 +1,25 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import {
+  render,
+  screen,
+} from "@testing-library/react";
+
+import userEvent from "@testing-library/user-event";
 
 import { describe, expect, it, vi } from "vitest";
 
 import { VModal } from "./modal";
 
+
 describe("VModal", () => {
-  const renderModal = (props = {}) => {
+
+  const renderModal = (
+    props = {},
+  ) => {
     const onOpenChange = vi.fn();
 
     render(
       <VModal
-        open={true}
+        open
         onOpenChange={onOpenChange}
         title="Test Modal"
         description="Modal description"
@@ -25,89 +34,324 @@ describe("VModal", () => {
     };
   };
 
-  it("renders modal when open", () => {
+
+  it("renders when open", () => {
+
     renderModal();
 
-    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    expect(
+      screen.getByRole("dialog"),
+    ).toBeInTheDocument();
 
-    expect(screen.getByText("Modal content")).toBeInTheDocument();
+
+    expect(
+      screen.getByText("Modal content"),
+    ).toBeInTheDocument();
+
   });
 
+
+
   it("does not render when closed", () => {
+
     render(
-      <VModal open={false} onOpenChange={vi.fn()}>
-        Hidden modal
+      <VModal
+        open={false}
+        onOpenChange={vi.fn()}
+      >
+        Hidden content
       </VModal>,
     );
 
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+    expect(
+      screen.queryByRole("dialog"),
+    ).not.toBeInTheDocument();
+
   });
 
-  it("renders title and description", () => {
+
+
+  it("renders title correctly", () => {
+
     renderModal();
 
-    expect(screen.getByText("Test Modal")).toBeInTheDocument();
 
-    expect(screen.getByText("Modal description")).toBeInTheDocument();
+    expect(
+      screen.getByRole(
+        "heading",
+        {
+          name: "Test Modal",
+        },
+      ),
+    ).toBeInTheDocument();
+
   });
 
-  it("closes when close button is clicked", () => {
-    const { onOpenChange } = renderModal();
 
-    fireEvent.click(
-      screen.getByRole("button", {
-        name: /close modal/i,
-      }),
+
+  it("renders description correctly", () => {
+
+    renderModal();
+
+
+    expect(
+      screen.getByText(
+        "Modal description",
+      ),
+    ).toBeInTheDocument();
+
+  });
+
+
+
+  it("has correct accessibility attributes", () => {
+
+    renderModal();
+
+
+    const dialog =
+      screen.getByRole("dialog");
+
+
+    expect(dialog)
+      .toHaveAttribute(
+        "aria-modal",
+        "true",
+      );
+
+  });
+
+
+
+  it("closes from close button", async () => {
+
+    const user = userEvent.setup();
+
+
+    const {
+      onOpenChange,
+    } = renderModal();
+
+
+    await user.click(
+      screen.getByRole(
+        "button",
+        {
+          name: /close modal/i,
+        },
+      ),
     );
 
-    expect(onOpenChange).toHaveBeenCalledWith(false);
+
+    expect(
+      onOpenChange,
+    )
+      .toHaveBeenCalledWith(false);
+
   });
 
-  it("closes when Escape key is pressed", () => {
-    const { onOpenChange } = renderModal();
 
-    fireEvent.keyDown(document, {
-      key: "Escape",
+
+  it("closes with Escape key", async () => {
+
+    const user = userEvent.setup();
+
+
+    const {
+      onOpenChange,
+    } = renderModal();
+
+
+    await user.keyboard(
+      "{Escape}",
+    );
+
+
+    expect(
+      onOpenChange,
+    )
+      .toHaveBeenCalledWith(false);
+
+  });
+
+
+
+  it("does not close when escape is disabled", async () => {
+
+    const user = userEvent.setup();
+
+
+    const {
+      onOpenChange,
+    } = renderModal({
+      disableEscapeKey: true,
     });
 
-    expect(onOpenChange).toHaveBeenCalledWith(false);
+
+    await user.keyboard(
+      "{Escape}",
+    );
+
+
+    expect(
+      onOpenChange,
+    )
+      .not
+      .toHaveBeenCalled();
+
   });
 
-  it("closes when overlay is clicked", () => {
-    const { onOpenChange } = renderModal();
 
-    const overlay = document.querySelector(".bg-black\\/50");
 
-    fireEvent.click(overlay!);
+  it("closes when clicking overlay", async () => {
 
-    expect(onOpenChange).toHaveBeenCalledWith(false);
+    const user = userEvent.setup();
+
+
+    const {
+      onOpenChange,
+    } = renderModal();
+
+
+    const overlay =
+      document.querySelector(
+        "[data-radix-dialog-overlay]",
+      );
+
+
+    await user.click(
+      overlay!,
+    );
+
+
+    expect(
+      onOpenChange,
+    )
+      .toHaveBeenCalledWith(false);
+
   });
 
-  it("does not close when overlay click is disabled", () => {
-    const { onOpenChange } = renderModal({
-      closeOnOverlayClick: false,
+
+
+  it("does not close when overlay closing is disabled", async () => {
+
+    const user = userEvent.setup();
+
+
+    const {
+      onOpenChange,
+    } = renderModal({
+      closeOnOverlayClick:false,
     });
 
-    const overlay = document.querySelector(".bg-black\\/50");
 
-    fireEvent.click(overlay!);
+    const overlay =
+      document.querySelector(
+        "[data-radix-dialog-overlay]",
+      );
 
-    expect(onOpenChange).not.toHaveBeenCalled();
+
+    await user.click(
+      overlay!,
+    );
+
+
+    expect(
+      onOpenChange,
+    )
+      .not
+      .toHaveBeenCalled();
+
   });
 
-  it("renders footer", () => {
+
+
+  it("hides close button when disabled", () => {
+
     renderModal({
-      footer: <button>Save</button>,
+      showCloseButton:false,
     });
 
-    expect(screen.getByText("Save")).toBeInTheDocument();
+
+    expect(
+      screen.queryByRole(
+        "button",
+        {
+          name:/close modal/i,
+        },
+      ),
+    )
+      .not
+      .toBeInTheDocument();
+
   });
 
-  it("applies size class", () => {
+
+
+  it("renders footer content", () => {
+
     renderModal({
-      size: "lg",
+      footer:
+        <button>
+          Save
+        </button>,
     });
 
-    expect(screen.getByRole("dialog")).toHaveClass("max-w-lg");
+
+    expect(
+      screen.getByRole(
+        "button",
+        {
+          name:"Save",
+        },
+      ),
+    )
+      .toBeInTheDocument();
+
   });
+
+
+
+  it("applies correct size styles", () => {
+
+    renderModal({
+      size:"lg",
+    });
+
+
+    expect(
+      screen.getByRole(
+        "dialog",
+      ),
+    )
+      .toHaveClass(
+        "max-w-lg",
+      );
+
+  });
+
+
+
+  it("supports complex children", () => {
+
+    renderModal({
+      children:
+        <form>
+          <input
+            aria-label="username"
+          />
+        </form>,
+    });
+
+
+    expect(
+      screen.getByLabelText(
+        "username",
+      ),
+    )
+      .toBeInTheDocument();
+
+  });
+
 });

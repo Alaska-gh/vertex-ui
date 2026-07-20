@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { VTab } from "./tabs";
+import { VTabs} from "./tabs";
 
 import type { TabItem } from "./tabs.types";
 
@@ -17,9 +17,9 @@ const items: TabItem[] = [
   },
 ];
 
-describe("VTabs", () => {
+describe("VTabss", () => {
   it("renders all tab triggers", () => {
-    render(<VTab items={items} />);
+    render(<VTabs items={items} />);
 
     expect(screen.getByRole("tab", { name: "Account" })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: "Billing" })).toBeInTheDocument();
@@ -27,7 +27,7 @@ describe("VTabs", () => {
   });
 
   it("shows the first tab's content by default", () => {
-    render(<VTab items={items} />);
+    render(<VTabs items={items} />);
 
     expect(screen.getByText("Account content")).toBeVisible();
   });
@@ -35,7 +35,7 @@ describe("VTabs", () => {
   it("switches content when a tab is clicked", async () => {
     const user = userEvent.setup();
 
-    render(<VTab items={items} />);
+    render(<VTabs items={items} />);
 
     await user.click(screen.getByRole("tab", { name: "Billing" }));
 
@@ -43,7 +43,7 @@ describe("VTabs", () => {
   });
 
   it("respects defaultValue for uncontrolled usage", () => {
-    render(<VTab items={items} defaultValue="billing" />);
+    render(<VTabs items={items} defaultValue="billing" />);
 
     expect(screen.getByText("Billing content")).toBeVisible();
   });
@@ -53,7 +53,7 @@ describe("VTabs", () => {
     const user = userEvent.setup();
 
     render(
-      <VTab items={items} value="account" onValueChange={onValueChange} />,
+      <VTabs items={items} value="account" onValueChange={onValueChange} />,
     );
 
     await user.click(screen.getByRole("tab", { name: "Billing" }));
@@ -63,7 +63,7 @@ describe("VTabs", () => {
   });
 
   it("disables a tab marked as disabled", () => {
-    render(<VTab items={items} />);
+    render(<VTabs items={items} />);
 
     expect(screen.getByRole("tab", { name: "Advanced" })).toBeDisabled();
   });
@@ -71,7 +71,7 @@ describe("VTabs", () => {
   it("does not switch to a disabled tab", async () => {
     const user = userEvent.setup();
 
-    render(<VTab items={items} />);
+    render(<VTabs items={items} />);
 
     await user.click(screen.getByRole("tab", { name: "Advanced" }));
 
@@ -79,7 +79,7 @@ describe("VTabs", () => {
   });
 
   it("applies the pills variant to triggers", () => {
-    render(<VTab items={items} variant="pills" />);
+    render(<VTabs items={items} variant="pills" />);
 
     expect(screen.getByRole("tab", { name: "Account" })).toHaveClass(
       "rounded-md",
@@ -90,7 +90,7 @@ describe("VTabs", () => {
     let node: HTMLDivElement | null = null;
 
     render(
-      <VTab
+      <VTabs
         items={items}
         ref={(el) => {
           node = el;

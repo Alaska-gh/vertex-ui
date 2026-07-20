@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { TabItem } from "./tabs.types";
-import { VTab } from "./tabs";
+import { VTabs } from "./tabs";
 
 
 
@@ -26,7 +26,7 @@ const basicItems: TabItem[] = [
 
 const meta = {
   title: "Components/Tabs",
-  component: VTab,
+  component: VTabs,
   parameters: {
     layout: "centered",
   },
@@ -34,7 +34,7 @@ const meta = {
   args: {
     items: basicItems,
   },
-} satisfies Meta<typeof VTab>;
+} satisfies Meta<typeof VTabs>;
 
 export default meta;
 
@@ -43,7 +43,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => (
     <div className="w-96">
-      <VTab {...args} />
+      <VTabs {...args} />
     </div>
   ),
 };
@@ -51,7 +51,7 @@ export const Default: Story = {
 export const Pills: Story = {
   render: (args) => (
     <div className="w-96">
-      <VTab {...args} variant="pills" />
+      <VTabs {...args} variant="pills" />
     </div>
   ),
 };
@@ -59,7 +59,7 @@ export const Pills: Story = {
 export const Vertical: Story = {
   render: (args) => (
     <div className="w-[28rem]">
-      <VTab {...args} orientation="vertical" />
+      <VTabs {...args} orientation="vertical" />
     </div>
   ),
 };
@@ -67,7 +67,7 @@ export const Vertical: Story = {
 export const WithIcons: Story = {
   render: () => (
     <div className="w-96">
-      <VTab
+      <VTabs
         items={[
           {
             value: "overview",
@@ -90,7 +90,7 @@ export const WithIcons: Story = {
 export const WithDisabledtabs: Story = {
   render: () => (
     <div className="w-96">
-      <VTab
+      <VTabs
         items={[
           {
             value: "general",
@@ -114,7 +114,7 @@ export const Controlled: Story = {
     const [value, setValue] = useState("billing");
 
     return (
-      <VTab
+      <VTabs
         {...args}
         value={value}
         onValueChange={setValue}

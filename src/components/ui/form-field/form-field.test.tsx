@@ -1,14 +1,14 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 
-import { FormField } from "./form-field";
+import { VFormField } from "./form-field";
 
-describe("FormField", () => {
+describe("VFormField", () => {
   it("renders label", () => {
     render(
-      <FormField label="Username">
+      <VFormField label="Username">
         <input />
-      </FormField>
+      </VFormField>
     );
 
     expect(screen.getByText("Username")).toBeInTheDocument();
@@ -16,9 +16,9 @@ describe("FormField", () => {
 
   it("renders helper text", () => {
     render(
-      <FormField helperText="Helpful text">
+      <VFormField helperText="Helpful text">
         <input />
-      </FormField>
+      </VFormField>
     );
 
     expect(screen.getByText("Helpful text")).toBeInTheDocument();
@@ -26,12 +26,12 @@ describe("FormField", () => {
 
   it("renders error message", () => {
     render(
-      <FormField
+      <VFormField
         error
         errorMessage="Something went wrong"
       >
         <input />
-      </FormField>
+      </VFormField>
     );
 
     expect(
@@ -41,9 +41,9 @@ describe("FormField", () => {
 
   it("renders required indicator", () => {
     render(
-      <FormField label="Name" required>
+      <VFormField label="Name" required>
         <input />
-      </FormField>
+      </VFormField>
     );
 
     expect(screen.getByText("*")).toBeInTheDocument();
@@ -51,12 +51,12 @@ describe("FormField", () => {
 
   it("associates label with input", () => {
     render(
-      <FormField
+      <VFormField
         label="Username"
         htmlFor="username"
       >
         <input id="username" />
-      </FormField>
+      </VFormField>
     );
 
     expect(
@@ -66,9 +66,9 @@ describe("FormField", () => {
 
   it("renders children", () => {
     render(
-      <FormField>
+      <VFormField>
         <input data-testid="input" />
-      </FormField>
+      </VFormField>
     );
 
     expect(
@@ -78,12 +78,12 @@ describe("FormField", () => {
 
   it("applies disabled styling", () => {
     render(
-      <FormField
+      <VFormField
         label="Username"
         disabled
       >
         <input />
-      </FormField>
+      </VFormField>
     );
 
     expect(

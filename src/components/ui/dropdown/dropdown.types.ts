@@ -1,6 +1,23 @@
 import type { ReactElement, ReactNode } from "react";
 
-import type { PopoverAlign, PopoverSide } from "../popover/popover.types";
+
+export type DropdownSide =
+  | "top"
+  | "right"
+  | "bottom"
+  | "left";
+
+
+export type DropdownAlign =
+  | "start"
+  | "center"
+  | "end";
+
+
+export type DropdownItemVariant =
+  | "default"
+  | "destructive";
+
 
 export type DropdownItem =
   | {
@@ -10,8 +27,7 @@ export type DropdownItem =
       icon?: ReactNode;
       onSelect?: () => void;
       disabled?: boolean;
-      /** Styles the item as a destructive action, e.g. "Delete". */
-      destructive?: boolean;
+      variant?: DropdownItemVariant;
     }
   | {
       type: "separator";
@@ -23,24 +39,47 @@ export type DropdownItem =
       label: ReactNode;
     };
 
+
 export interface DropdownProps {
-  /** The element that opens the menu on click. Must accept a ref (asChild). */
+
+  /**
+   * Element that triggers the dropdown.
+   */
   trigger: ReactElement;
 
+
+  /**
+   * Dropdown menu items.
+   */
   items: DropdownItem[];
 
-  /** Controlled open state. Omit for uncontrolled usage. */
+
+  /**
+   * Controlled open state.
+   */
   open?: boolean;
 
+
+  /**
+   * Default uncontrolled state.
+   */
   defaultOpen?: boolean;
 
-  onOpenChange?: (open: boolean) => void;
 
-  side?: PopoverSide;
+  /**
+   * Open state callback.
+   */
+  onOpenChange?: (open:boolean)=>void;
 
-  align?: PopoverAlign;
+
+  side?: DropdownSide;
+
+
+  align?: DropdownAlign;
+
 
   sideOffset?: number;
+
 
   className?: string;
 }

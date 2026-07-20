@@ -1,48 +1,40 @@
 [data-theme="dark"] {
+  --background: #09090b;
 
-  --background:#09090b;
+  --surface: #18181b;
 
-  --surface:#18181b;
+  --surface-hover: #27272a;
 
-  --surface-hover:#27272a;
+  --foreground: #fafafa;
 
-  --foreground:#fafafa;
+  --foreground-muted: #a1a1aa;
 
-  --foreground-muted:#a1a1aa;
+  --border: #3f3f46;
 
-  --border:#3f3f46;
+  --button-secondary-bg: var(--gray-800);
 
-    --button-secondary-bg:
-    var(--gray-800);
+  --button-secondary-hover: var(--gray-700);
 
-  --button-secondary-hover:
-    var(--gray-700);
+  --button-outline-border: var(--gray-700);
 
+  --button-outline-hover: var(--gray-800);
 
-  --button-outline-border:
-    var(--gray-700);
+  --button-ghost-hover: var(--gray-800);
 
-  --button-outline-hover:
-    var(--gray-800);
-
-
-  --button-ghost-hover:
-    var(--gray-800);
-
+  --muted: var(--gray-800);
+  --muted-foreground: var(--gray-400);
 }
 
 [data-theme="light"] {
+  --background: #ffffff;
 
-  --background:#ffffff;
+  --surface: #ffffff;
 
-  --surface:#ffffff;
+  --surface-hover: #f8fafc;
 
-  --surface-hover:#f8fafc;
+  --foreground: #111827;
 
-  --foreground:#111827;
+  --foreground-muted: #6b7280;
 
-  --foreground-muted:#6b7280;
-
-  --border:#e5e7eb;
-
+  --border: #e5e7eb;
 }

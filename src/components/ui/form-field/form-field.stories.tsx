@@ -1,31 +1,31 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { FormField } from "./form-field";
+import { VFormField } from "./form-field";
 
-const meta: Meta<typeof FormField> = {
+const meta: Meta<typeof VFormField> = {
   title: "Components/FormField",
-  component: FormField,
+  component: VFormField,
   tags: ["autodocs"],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof FormField>;
+type Story = StoryObj<typeof VFormField>;
 
 export const Default: Story = {
   render: () => (
-    <FormField label="Username" htmlFor="username">
+    <VFormField label="Username" htmlFor="username">
       <input
         id="username"
         className="border rounded-md px-3 py-2"
         placeholder="Enter username"
       />
-    </FormField>
+    </VFormField>
   ),
 };
 
 export const WithHelperText: Story = {
   render: () => (
-    <FormField
+    <VFormField
       label="Email"
       htmlFor="email"
       helperText="We'll never share your email."
@@ -35,13 +35,13 @@ export const WithHelperText: Story = {
         className="border rounded-md px-3 py-2"
         placeholder="example@email.com"
       />
-    </FormField>
+    </VFormField>
   ),
 };
 
 export const Error: Story = {
   render: () => (
-    <FormField
+    <VFormField
       label="Email"
       htmlFor="email"
       error
@@ -51,13 +51,13 @@ export const Error: Story = {
         id="email"
         className="border rounded-md px-3 py-2"
       />
-    </FormField>
+    </VFormField>
   ),
 };
 
 export const Required: Story = {
   render: () => (
-    <FormField
+    <VFormField
       label="Password"
       htmlFor="password"
       required
@@ -66,13 +66,13 @@ export const Required: Story = {
         id="password"
         className="border rounded-md px-3 py-2"
       />
-    </FormField>
+    </VFormField>
   ),
 };
 
 export const Disabled: Story = {
   render: () => (
-    <FormField
+    <VFormField
       label="Username"
       htmlFor="username"
       disabled
@@ -82,6 +82,6 @@ export const Disabled: Story = {
         disabled
         className="border rounded-md px-3 py-2"
       />
-    </FormField>
+    </VFormField>
   ),
 };
