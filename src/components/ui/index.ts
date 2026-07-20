@@ -23,3 +23,4 @@ export * from "./tabs";
 export * from "./divider";
 export * from "./data-grid";
 export * from "./dropdown";
+export * from "./breadcrumb";

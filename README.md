@@ -170,7 +170,7 @@ src
 ### Navigation
 
 - [x] tabs
-- [ ] Breadcrumb
+- [x] Breadcrumb
 - [ ] Pagination
 - [x] Dropdown
 
@@ -212,6 +212,7 @@ src
 | Divider   | ✅        | ✅ 9 Tests  | ✅           |
 | Data Grid | ✅        | ✅ 16 Tests | ✅           |
 | Dropdown  | ✅        | ✅ 10 Tests | ✅           |
+| Breadcrumb| ✅        | ✅ 11 Tests | ✅           |
 
 ---
 
@@ -255,18 +256,18 @@ Vertex UI follows four guiding principles.
 - [x] Input
 - [x] Textarea
 - [x] Select
-- [ ] Badge
+- [x] Badge
 
 ## Version 0.3
 
-- [ ] Modal
-- [ ] Dropdown
-- [ ] tabs
+- [x] Modal
+- [x] Dropdown
+- [x] tabs
 
 ## Version 1.0
 
 - [ ] Documentation
-- [ ] 20+ Components
+- [x] 20+ Components
 - [ ] npm Package
 - [ ] CI/CD
 - [ ] 100% Storybook Coverage
