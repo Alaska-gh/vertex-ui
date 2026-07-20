@@ -210,6 +210,7 @@ src
 | Skeleton  | ✅        | ✅ 11 Tests | ✅           |
 | Tabs      | ✅        | ✅ 9 Tests  | ✅           |
 | Divider   | ✅        | ✅ 9 Tests  | ✅           |
+| Data Grid | ✅        | ✅ 16 Tests | ✅           |
 
 ---
 
