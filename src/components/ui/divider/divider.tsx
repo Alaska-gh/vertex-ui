@@ -55,6 +55,7 @@ export const VDivider = forwardRef<HTMLDivElement, DividerProps>(
         ref={ref}
         orientation={orientation ?? DIVIDER_DEFAULTS.orientation}
         decorative={decorative}
+        aria-orientation="horizontal"
         className={cn(
           dividerVariants({
             orientation,

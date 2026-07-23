@@ -22,9 +22,6 @@ export const VSkeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
     },
     ref,
   ) => {
-    const dimensions =
-      SKELETON_DEFAULT_DIMENSIONS[variant ?? SKELETON_DEFAULTS.variant];
-
     return (
       <span
         ref={ref}
@@ -37,8 +34,8 @@ export const VSkeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
           className,
         )}
         style={{
-          width: width ?? dimensions.width,
-          height: height ?? dimensions.height,
+          width: width ?? SKELETON_DEFAULT_DIMENSIONS[variant!].width,
+          height: height ?? SKELETON_DEFAULT_DIMENSIONS[variant!].height,
         }}
       />
     );

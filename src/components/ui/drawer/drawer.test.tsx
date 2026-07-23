@@ -122,4 +122,87 @@ describe("VDrawer", () => {
 
     expect(screen.getByRole("dialog")).toHaveClass("left-0");
   });
+
+  it("does not close when another key is pressed", () => {
+  const onOpenChange = vi.fn();
+
+  render(
+    <VDrawer
+      open={true}
+      onOpenChange={onOpenChange}
+    >
+      Content
+    </VDrawer>,
+  );
+
+  fireEvent.keyDown(document, {
+    key: "Enter",
+  });
+
+  expect(onOpenChange).not.toHaveBeenCalled();
+});
+
+it("applies right side styles", () => {
+  render(
+    <VDrawer
+      open={true}
+      onOpenChange={() => {}}
+      side="right"
+    >
+      Content
+    </VDrawer>,
+  );
+
+  expect(screen.getByRole("dialog"))
+    .toHaveClass("rounded-l-2xl");
+});
+
+
+it("applies top side styles", () => {
+  render(
+    <VDrawer
+      open={true}
+      onOpenChange={() => {}}
+      side="top"
+    >
+      Content
+    </VDrawer>,
+  );
+
+  expect(screen.getByRole("dialog"))
+    .toHaveClass("rounded-b-2xl");
+});
+
+
+it("applies bottom side styles", () => {
+  render(
+    <VDrawer
+      open={true}
+      onOpenChange={() => {}}
+      side="bottom"
+    >
+      Content
+    </VDrawer>,
+  );
+
+  expect(screen.getByRole("dialog"))
+    .toHaveClass("rounded-t-2xl");
+});
+
+it("renders description when provided", () => {
+  render(
+    <VDrawer
+      open={true}
+      onOpenChange={() => {}}
+      title="Settings"
+      description="Manage your preferences"
+    >
+      Content
+    </VDrawer>,
+  );
+
+  expect(
+    screen.getByText("Manage your preferences"),
+  ).toBeInTheDocument();
+});
 });

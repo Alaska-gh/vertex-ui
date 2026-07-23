@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { VDivider } from "./divider";
+import type { DividerProps } from "./divider.types";
 
 describe("VDivider", () => {
   it("renders a horizontal divider by default", () => {
@@ -68,4 +69,36 @@ describe("VDivider", () => {
 
     expect(node).toBeInstanceOf(HTMLDivElement);
   });
+
+it("uses default horizontal orientation when orientation is not provided", () => {
+  render(<VDivider />);
+
+  const divider = document.querySelector(
+    "[data-orientation='horizontal']",
+  );
+
+  expect(divider).toBeInTheDocument();
+  expect(divider).toHaveClass("h-px", "w-full");
+});
+
+it("falls back to the default orientation when orientation is null", () => {
+  render(
+    <VDivider
+      orientation={null as unknown as DividerProps["orientation"]}
+      decorative={false}
+    />,
+  );
+
+  const separator = screen.getByRole("separator");
+
+  expect(separator).toHaveAttribute(
+    "aria-orientation",
+    "horizontal",
+  );
+
+  expect(separator).toHaveAttribute(
+    "data-orientation",
+    "horizontal",
+  );
+});
 });

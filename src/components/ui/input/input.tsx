@@ -6,7 +6,7 @@ import { useId } from "react";
 import type { InputProps } from "./input.types";
 
 import { cn } from "@/lib/utils";
-import { FormField } from "../form-field";
+import { VFormField } from "../form-field";
 
 export const VInput = forwardRef<HTMLInputElement, InputProps>(
   (
@@ -34,7 +34,7 @@ export const VInput = forwardRef<HTMLInputElement, InputProps>(
     const inputId = id ?? generatedId;
 
     return (
-      <FormField
+      <VFormField
         label={label}
         helperText={helperText}
         error={!!error}
@@ -69,7 +69,7 @@ export const VInput = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {rightIcon}
-      </FormField>
+      </VFormField>
     );
   },
 );

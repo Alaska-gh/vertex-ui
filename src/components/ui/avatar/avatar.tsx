@@ -4,6 +4,7 @@ import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { cn } from "@/lib/utils";
 
 import { AVATAR_DEFAULTS } from "./avatar.constants";
+
 import {
   avatarVariants,
   avatarImageVariants,
@@ -11,6 +12,7 @@ import {
 } from "./avatar.variants";
 
 import type { AvatarProps } from "./avatar.types";
+
 
 export const VAvatar = forwardRef<
   HTMLSpanElement,
@@ -20,7 +22,7 @@ export const VAvatar = forwardRef<
     {
       src,
       alt = "Avatar",
-      fallback,
+      fallback = "?",
 
       size = AVATAR_DEFAULTS.size,
       radius = AVATAR_DEFAULTS.radius,
@@ -34,6 +36,7 @@ export const VAvatar = forwardRef<
     return (
       <AvatarPrimitive.Root
         ref={ref}
+        aria-label={alt}
         className={cn(
           avatarVariants({
             size,
@@ -43,6 +46,7 @@ export const VAvatar = forwardRef<
         )}
         {...props}
       >
+
         {src && (
           <AvatarPrimitive.Image
             src={src}
@@ -58,9 +62,11 @@ export const VAvatar = forwardRef<
         >
           {fallback}
         </AvatarPrimitive.Fallback>
+
       </AvatarPrimitive.Root>
     );
   },
 );
+
 
 VAvatar.displayName = "VAvatar";

@@ -119,9 +119,6 @@ export function VDataGrid<T extends object>({
   }, [sortedData, pageSize, safePage]);
 
   const handleSort = (column: DataGridColumn<T>) => {
-    if (!column.sortable) {
-      return;
-    }
 
     const nextDirection: SortDirection =
       activeSortKey === column.key && activeSortDirection === "asc"

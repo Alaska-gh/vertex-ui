@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 import type { TextareaProps } from "./textarea.types";
-import { FormField } from "../form-field";
+import { VFormField } from "../form-field";
 import { cn } from "@/lib/utils";
 import { textareaVariants } from "./textarea.variants";
 
@@ -86,7 +86,7 @@ export const VTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const textareaId = id ?? generatedId;
 
     return (
-      <FormField
+      <VFormField
         label={label}
         helperText={helperText}
         error={!!error}
@@ -144,7 +144,7 @@ export const VTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             </p>
           )}
         </>
-      </FormField>
+      </VFormField>
     );
   },
 );

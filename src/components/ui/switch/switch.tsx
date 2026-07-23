@@ -3,7 +3,7 @@ import * as Switch from "@radix-ui/react-switch";
 
 import { cn } from "@/lib/utils";
 
-import { FormField } from "../form-field";
+import { VFormField } from "../form-field";
 
 import { switchThumbVariants, switchVariants } from "./switch.variants";
 import { SWITCH_DEFAULTS } from "./switch.constants";
@@ -36,7 +36,7 @@ export const VSwitch = forwardRef<HTMLButtonElement, SwitchProps>(
     const switchId = id ?? generatedId;
 
     return (
-      <FormField
+      <VFormField
         label={label}
         htmlFor={switchId}
         helperText={helperText}
@@ -66,7 +66,7 @@ export const VSwitch = forwardRef<HTMLButtonElement, SwitchProps>(
             })}
           />
         </Switch.Root>
-      </FormField>
+      </VFormField>
     );
   },
 );

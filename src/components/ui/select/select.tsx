@@ -4,7 +4,7 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import { FormField } from "../form-field";
+import { VFormField } from "../form-field";
 
 import { selectVariants } from "./select.variants";
 
@@ -36,7 +36,7 @@ export const VSelect = forwardRef<HTMLButtonElement, SelectProps>(
     ref,
   ) => {
     return (
-      <FormField
+      <VFormField
         label={label}
         helperText={helperText}
         error={!!error}
@@ -114,7 +114,7 @@ export const VSelect = forwardRef<HTMLButtonElement, SelectProps>(
             </Select.Content>
           </Select.Portal>
         </Select.Root>
-      </FormField>
+      </VFormField>
     );
   },
 );

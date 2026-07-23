@@ -3,7 +3,7 @@ import * as RadioGroup from "@radix-ui/react-radio-group";
 
 import { cn } from "@/lib/utils";
 
-import { FormField } from "../form-field";
+import { VFormField } from "../form-field";
 
 import { radioGroupVariants, radioItemVariants } from "./radio-group.variants";
 import { RADIO_GROUP_DEFAULTS } from "./radio-group.constants";
@@ -46,7 +46,7 @@ export const VRadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     };
 
     return (
-      <FormField
+      <VFormField
         label={label}
         helperText={helperText}
         error={!!error}
@@ -115,7 +115,7 @@ export const VRadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
             );
           })}
         </RadioGroup.Root>
-      </FormField>
+      </VFormField>
     );
   },
 );

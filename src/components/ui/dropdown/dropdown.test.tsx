@@ -292,4 +292,101 @@ describe("VDropdown", () => {
 
     expect(refElement).not.toBeNull();
   });
+
+  it("renders item icons correctly", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <VDropdown
+        trigger={<button>Open</button>}
+        items={[
+          {
+            key: "edit",
+            label: "Edit",
+            icon: <span data-testid="edit-icon">✏️</span>,
+            type:"item"
+          },
+        ]}
+      />,
+    );
+
+    await user.click(
+      screen.getByRole("button", {
+        name: "Open",
+      }),
+    );
+
+    expect(screen.getByTestId("edit-icon")).toBeInTheDocument();
+  });
+
+  it("renders dropdown label with the correct styling", async () => {
+  const user = userEvent.setup();
+
+  render(
+    <VDropdown
+      trigger={<button>Open</button>}
+      items={[
+        {
+          type: "label",
+          key: "account",
+          label: "Account",
+        },
+      ]}
+    />,
+  );
+
+  await user.click(
+    screen.getByRole("button", {
+      name: /open/i,
+    }),
+  );
+
+  const label = await screen.findByText("Account");
+
+  expect(label).toHaveClass(
+    "text-muted-foreground",
+    "px-2",
+    "py-1.5",
+    "text-xs",
+    "font-medium",
+  );
+});
+
+it("renders separator items", async () => {
+  const user = userEvent.setup();
+
+  render(
+    <VDropdown
+      trigger={<button>Open</button>}
+      items={[
+        {
+          type: "item",
+          key: "edit",
+          label: "Edit",
+        },
+        {
+          type: "separator",
+          key: "divider",
+        },
+        {
+          type: "item",
+          key: "delete",
+          label: "Delete",
+        },
+      ]}
+    />,
+  );
+
+  await user.click(
+    screen.getByRole("button", {
+      name: /open/i,
+    }),
+  );
+
+  // Radix renders separators with role="separator"
+  const separator = screen.getByRole("separator");
+
+  expect(separator).toBeInTheDocument();
+  expect(separator).toHaveClass("bg-border", "my-1", "h-px");
+});
 });

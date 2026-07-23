@@ -117,4 +117,75 @@ describe("VTable", () => {
 
     expect(container.querySelector("td")).toHaveClass("px-3");
   });
+
+  it("applies a custom column width", () => {
+  const columnsWithWidth: TableColumn<Row>[] = [
+    {
+      key: "name",
+      header: "Name",
+      width: "200px",
+    },
+    {
+      key: "role",
+      header: "Role",
+    },
+  ];
+
+  render(<VTable columns={columnsWithWidth} data={data} />);
+
+  expect(
+    screen.getByRole("columnheader", { name: "Name" }),
+  ).toHaveStyle({
+    width: "200px",
+  });
+});
+
+it("applies custom text alignment to header and cells", () => {
+  const alignedColumns: TableColumn<Row>[] = [
+    {
+      key: "name",
+      header: "Name",
+      align: "center",
+    },
+    {
+      key: "role",
+      header: "Role",
+      align: "right",
+    },
+  ];
+
+  render(<VTable columns={alignedColumns} data={data} />);
+
+  expect(
+    screen.getByRole("columnheader", { name: "Name" }),
+  ).toHaveClass("text-center");
+
+  expect(
+    screen.getByRole("columnheader", { name: "Role" }),
+  ).toHaveClass("text-right");
+
+  expect(screen.getByText("Ama")).toHaveClass("text-center");
+  expect(screen.getByText("Admin")).toHaveClass("text-right");
+});
+
+it("renders an empty string when a column key does not exist on the row", () => {
+  const columnsWithMissingKey: TableColumn<Row>[] = [
+    {
+      key: "missing",
+      header: "Missing",
+    } as TableColumn<Row>,
+  ];
+
+  render(
+    <VTable
+      columns={columnsWithMissingKey}
+      data={data}
+    />,
+  );
+
+  const cell = screen.getAllByRole("cell")[0];
+
+  expect(cell).toHaveTextContent("");
+  expect(cell.textContent).toBe("");
+});
 });

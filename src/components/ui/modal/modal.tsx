@@ -21,12 +21,32 @@ export function VModal({
   disableAutoFocus = MODAL_DEFAULTS.disableAutoFocus,
   className,
 }: VModalProps) {
+
+  const handleClose = () => {
+    onOpenChange?.(false);
+  };
+
+  const handleAutoFocus = (event: Event) => {
+  if (disableAutoFocus) {
+    event.preventDefault();
+  }
+};
+
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className={MODAL_STYLES.overlay} />
+        <Dialog.Overlay
+          className={MODAL_STYLES.overlay}
+          onPointerDown={() => {
+            if (closeOnOverlayClick) {
+              handleClose()
+            }
+          }}
+          data-testid="modal-overlay"
+        />
 
         <Dialog.Content
+          aria-modal="true"
           className={cn(
             MODAL_STYLES.content,
             MODAL_SIZE_CLASSES[size],
@@ -42,13 +62,9 @@ export function VModal({
               event.preventDefault();
             }
           }}
-          onOpenAutoFocus={(event) => {
-            if (disableAutoFocus) {
-              event.preventDefault();
-            }
-          }}
+          onOpenAutoFocus={handleAutoFocus}
         >
-          {(title || showCloseButton) && (
+          {(title || description || showCloseButton) && (
             <header className={MODAL_STYLES.header}>
               <div className="min-w-0 flex-1">
                 {title && (
@@ -58,9 +74,7 @@ export function VModal({
                 )}
 
                 {description && (
-                  <Dialog.Description
-                    className={MODAL_STYLES.description}
-                  >
+                  <Dialog.Description className={MODAL_STYLES.description}>
                     {description}
                   </Dialog.Description>
                 )}
@@ -80,15 +94,9 @@ export function VModal({
             </header>
           )}
 
-          <div className={MODAL_STYLES.body}>
-            {children}
-          </div>
+          <div className={MODAL_STYLES.body}>{children}</div>
 
-          {footer && (
-            <footer className={MODAL_STYLES.footer}>
-              {footer}
-            </footer>
-          )}
+          {footer && <footer className={MODAL_STYLES.footer}>{footer}</footer>}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

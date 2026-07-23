@@ -192,14 +192,11 @@ function BreadcrumbItemRenderer({
 
 
   switch (item.type) {
-
     case "link":
       return (
         <a
           href={item.href}
-          aria-disabled={
-            item.disabled || undefined
-          }
+          aria-disabled={item.disabled || undefined}
           onClick={(event) => {
             if (item.disabled) {
               event.preventDefault();
@@ -211,7 +208,6 @@ function BreadcrumbItemRenderer({
           })}
         >
           {icon}
-
           {item.label}
         </a>
       );
@@ -229,7 +225,6 @@ function BreadcrumbItemRenderer({
           })}
         >
           {icon}
-
           {item.label}
         </button>
       );
@@ -244,10 +239,13 @@ function BreadcrumbItemRenderer({
           })}
         >
           {icon}
-
           {item.label}
         </span>
       );
+
+
+    default:
+      return null;
   }
 }
 

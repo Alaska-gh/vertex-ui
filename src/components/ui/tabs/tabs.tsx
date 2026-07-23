@@ -19,11 +19,12 @@ export const VTabs = forwardRef<HTMLDivElement, TabProps>(
     },
     ref,
   ) => {
+    const initialValue = defaultValue ?? (items.length > 0 ? items[0].value : undefined);
     return (
       <tabsPrimitive.Root
         ref={ref}
         value={value}
-        defaultValue={defaultValue ?? items[0]?.value}
+        defaultValue={initialValue}
         onValueChange={onValueChange}
         orientation={orientation ?? undefined}
         className={cn(

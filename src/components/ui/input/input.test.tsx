@@ -110,5 +110,19 @@ describe("VInput", () => {
 
   });
 
+  it("renders right icon and applies right padding", () => {
+  render(
+    <VInput
+      rightIcon={<span data-testid="right-icon">icon</span>}
+    />,
+  );
 
+  const input = screen.getByRole("textbox");
+
+  expect(
+    screen.getByTestId("right-icon"),
+  ).toBeInTheDocument();
+
+  expect(input).toHaveClass("pr-10");
+});
 });

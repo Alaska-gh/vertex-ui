@@ -10,194 +10,103 @@ import {
   dropdownItemVariants,
 } from "./dropdown.variants";
 
-import type {
-  DropdownProps,
-} from "./dropdown.types";
+import type { DropdownProps } from "./dropdown.types";
 
+export const VDropdown = forwardRef<HTMLDivElement, DropdownProps>(
+  (
+    {
+      trigger,
+      items,
 
-export const VDropdown = forwardRef<
-  HTMLDivElement,
-  DropdownProps
->(
-(
-{
-  trigger,
-  items,
+      open,
+      defaultOpen,
+      onOpenChange,
 
-  open,
-  defaultOpen,
-  onOpenChange,
+      side = DROPDOWN_DEFAULTS.side,
+      align = DROPDOWN_DEFAULTS.align,
+      sideOffset = DROPDOWN_DEFAULTS.sideOffset,
 
-  side = DROPDOWN_DEFAULTS.side,
-  align = DROPDOWN_DEFAULTS.align,
-  sideOffset = DROPDOWN_DEFAULTS.sideOffset,
+      className,
+    },
+    ref,
+  ) => {
+    return (
+      <DropdownMenuPrimitive.Root
+        open={open}
 
-  className,
+        defaultOpen={defaultOpen}
 
-},
-ref,
-)=>{
+        onOpenChange={onOpenChange}
+      >
+        <DropdownMenuPrimitive.Trigger asChild>
+          {trigger}
+        </DropdownMenuPrimitive.Trigger>
 
-return (
+        <DropdownMenuPrimitive.Portal>
+          <DropdownMenuPrimitive.Content
+            ref={ref}
 
-<DropdownMenuPrimitive.Root
+            side={side}
 
-open={open}
+            align={align}
 
-defaultOpen={defaultOpen}
+            sideOffset={sideOffset}
 
-onOpenChange={onOpenChange}
+            className={cn(dropdownContentVariants(), className)}
+          >
+            {items.map((item) => {
+              if (item.type === "separator") {
+                return (
+                  <DropdownMenuPrimitive.Separator
+                    key={item.key}
 
->
+                    className="bg-border my-1 h-px"
+                  />
+                );
+              }
 
-<DropdownMenuPrimitive.Trigger asChild>
+              if (item.type === "label") {
+                return (
+                  <DropdownMenuPrimitive.Label
+                    key={item.key}
+                    className="text-muted-foreground px-2 py-1.5 text-xs font-medium"
+                  >
+                    {item.label}
+                  </DropdownMenuPrimitive.Label>
+                );
+              }
 
-{trigger}
+              return (
+                <DropdownMenuPrimitive.Item
+                  key={item.key}
 
-</DropdownMenuPrimitive.Trigger>
+                  disabled={item.disabled}
 
+                  onSelect={item.onSelect}
 
-<DropdownMenuPrimitive.Portal>
+                  className={cn(
+                    dropdownItemVariants({
+                      variant: item.variant,
+                    }),
+                  )}
+                >
+                  {item.icon && (
+                    <span className="shrink-0" aria-hidden="true">
+                      {item.icon}
+                    </span>
+                  )}
 
-<DropdownMenuPrimitive.Content
-
-ref={ref}
-
-side={side}
-
-align={align}
-
-sideOffset={sideOffset}
-
-className={cn(
-dropdownContentVariants(),
-className
-)}
-
->
-
-{
-items.map((item)=>{
-
-if(item.type==="separator"){
-
-return (
-
-<DropdownMenuPrimitive.Separator
-
-key={item.key}
-
-className="
-my-1
-h-px
-bg-border
-"
-
-/>
-
+                  <span className={cn(
+                    item.variant === "destructive" && "text-danger"
+                  )}>{item.label}</span>
+                </DropdownMenuPrimitive.Item>
+              );
+            })}
+          </DropdownMenuPrimitive.Content>
+        </DropdownMenuPrimitive.Portal>
+      </DropdownMenuPrimitive.Root>
+    );
+  },
 );
 
-}
-
-
-
-if(item.type==="label"){
-
-return (
-
-<DropdownMenuPrimitive.Label
-
-key={item.key}
-
-className="
-px-2
-py-1.5
-text-xs
-font-medium
-text-muted-foreground
-"
-
->
-
-{item.label}
-
-</DropdownMenuPrimitive.Label>
-
-);
-
-}
-
-
-
-return (
-
-<DropdownMenuPrimitive.Item
-
-key={item.key}
-
-disabled={item.disabled}
-
-onSelect={item.onSelect}
-
-className={cn(
-
-dropdownItemVariants({
-
-variant:item.variant,
-
-})
-
-)}
-
->
-
-
-{
-item.icon && (
-
-<span
-className="shrink-0"
-aria-hidden="true"
->
-
-{item.icon}
-
-</span>
-
-)
-}
-
-
-<span>
-
-{item.label}
-
-</span>
-
-
-</DropdownMenuPrimitive.Item>
-
-
-);
-
-
-})
-
-}
-
-
-</DropdownMenuPrimitive.Content>
-
-
-</DropdownMenuPrimitive.Portal>
-
-
-</DropdownMenuPrimitive.Root>
-
-
-);
-
-});
-
-
-VDropdown.displayName="VDropdown";
+VDropdown.displayName = "VDropdown";

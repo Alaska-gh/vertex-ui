@@ -81,4 +81,16 @@ describe("VSkeleton", () => {
 
     expect(node).toBeInstanceOf(HTMLSpanElement);
   });
+
+  it("falls back to the default variant when variant is undefined", () => {
+  render(<VSkeleton variant={undefined} />);
+
+  const skeleton = screen.getByRole("status");
+
+  expect(skeleton).toHaveClass("rounded-md");
+  expect(skeleton).toHaveStyle({
+    width: "8rem",
+    height: "1rem",
+  });
+});
 });

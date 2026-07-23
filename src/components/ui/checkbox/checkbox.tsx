@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import { FormField } from "../form-field";
+import { VFormField } from "../form-field";
 
 import { checkboxVariants } from "./checkbox.variants";
 import { CHECKBOX_DEFAULTS } from "./checkbox.constants";
@@ -40,7 +40,7 @@ export const VCheckbox = forwardRef<
     const checkboxId = id ?? generatedId;
 
     return (
-      <FormField
+      <VFormField
         label={label}
         htmlFor={checkboxId}
         helperText={helperText}
@@ -68,7 +68,7 @@ export const VCheckbox = forwardRef<
             <Check className="h-3.5 w-3.5" />
           </Checkbox.Indicator>
         </Checkbox.Root>
-      </FormField>
+      </VFormField>
     );
   },
 );

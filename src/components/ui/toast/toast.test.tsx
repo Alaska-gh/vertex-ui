@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import { VToastProvider } from "./toast.provider";
 import { useToast } from "./use-toast";
+import { TOAST_DEFAULTS } from "./toast.constants";
 
 function TestComponent() {
   const { toast } = useToast();
@@ -134,4 +135,41 @@ describe("VToast", () => {
   it("throws outside provider", () => {
     expect(() => render(<TestComponent />)).toThrow(/VToastProvider/i);
   });
+
+  it("limits visible toasts to maxVisible", async () => {
+  function Demo() {
+    const { toast } = useToast();
+
+    return (
+      <button
+        onClick={() => {
+          toast({ title: "Toast 1" });
+          toast({ title: "Toast 2" });
+          toast({ title: "Toast 3" });
+          toast({ title: "Toast 4" });
+        }}
+      >
+        Show Toasts
+      </button>
+    );
+  }
+
+  render(
+    <VToastProvider>
+      <Demo />
+    </VToastProvider>,
+  );
+
+  fireEvent.click(screen.getByRole("button", { name: /show toasts/i }));
+
+  expect(await screen.findByText("Toast 4")).toBeInTheDocument();
+
+  const toastItems = screen.getAllByRole("status");
+
+  expect(toastItems.length).toBeLessThanOrEqual(TOAST_DEFAULTS.maxVisible);
+
+  expect(screen.queryByText("Toast 5")).not.toBeInTheDocument();
+});
+
+
 });

@@ -13,7 +13,7 @@ export function VFormField({
   layout = "vertical",
   labelClassName,
 }: FormFieldProps) {
-  if (layout == "horizontal") {
+  if (layout === "horizontal") {
     return (
       <div className="flex flex-col gap-1.5">
         <div className="flex items-start gap-3">

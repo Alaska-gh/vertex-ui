@@ -159,4 +159,40 @@ describe("VPagination", () => {
 
     expect(node).toBeInstanceOf(HTMLElement);
   });
+
+  it("jumps to the first page", async () => {
+  const user = userEvent.setup();
+
+  render(<VPagination pageCount={10} defaultPage={5} />);
+
+  await user.click(
+    screen.getByRole("button", {
+      name: "First page",
+    }),
+  );
+
+  expect(
+    screen.getByRole("button", {
+      name: "Page 1",
+    }),
+  ).toHaveAttribute("aria-current", "page");
+});
+
+it("navigates to the previous page", async () => {
+  const user = userEvent.setup();
+
+  render(<VPagination pageCount={10} defaultPage={5} />);
+
+  await user.click(
+    screen.getByRole("button", {
+      name: "Previous page",
+    }),
+  );
+
+  expect(
+    screen.getByRole("button", {
+      name: "Page 4",
+    }),
+  ).toHaveAttribute("aria-current", "page");
+});
 });

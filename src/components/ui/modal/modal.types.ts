@@ -17,7 +17,7 @@ export interface VModalProps {
   /**
    * Called whenever the open state changes.
    */
-  onOpenChange: (open: boolean) => void;
+  onOpenChange?: (open: boolean) => void;
 
   /**
    * Optional modal title.
