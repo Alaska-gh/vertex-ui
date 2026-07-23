@@ -1,0 +1,1 @@
+declare module "@vertex-ui/react/styles";

@@ -13,7 +13,11 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
+    "outDir": "./dist/types",
     "jsx": "react-jsx",
 
     /* Linting */
@@ -24,7 +28,7 @@
 
     "baseUrl": ".",
     "ignoreDeprecations": "6.0",
-    
+
     "paths": {
       "@/*": ["src/*"]
     }
